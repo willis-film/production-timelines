@@ -470,18 +470,22 @@
 <body>
 <div class="container">
 
+  <header>
+    <h1>Production <em>Timeline</em> Generator</h1>
+    <p>Videos &amp; Digital Postcards</p>
+  </header>
 
   <!-- PROJECT INFO -->
   <div class="form-section">
     <h2>Project Info</h2>
     <div class="field-row">
       <div>
-        <label for="projectName">Project Name</label>
-        <input type="text" id="projectName" placeholder="e.g. Brand Explainer V2">
+        <label for="client">Client</label>
+        <input type="text" id="client" placeholder="ABC Company">
       </div>
       <div>
-        <label for="client">Client / Studio</label>
-        <input type="text" id="client" placeholder="e.g. Acme Co.">
+        <label for="projectName">Project Name</label>
+        <input type="text" id="projectName" placeholder="Open Enrollment 2026">
       </div>
     </div>
     <div class="field-row">
@@ -686,12 +690,12 @@ const PHASE_TEMPLATES = {
   },
   'Translation': {
     new: [
-      { name: 'Translation',        duration: 5, buffer: 0, deliverable: 'Translation' },
+      { name: 'Translation',        duration: 2, buffer: 0, deliverable: 'Translation' },
       { name: 'Translation Updates', duration: 3, buffer: 0, deliverable: 'Translation' },
       { name: 'Approval',           duration: 1, buffer: 0, deliverable: 'Translation' },
     ],
     renewal: [
-      { name: 'Translation',        duration: 5, buffer: 0, deliverable: 'Translation' },
+      { name: 'Translation',        duration: 2, buffer: 0, deliverable: 'Translation' },
       { name: 'Translation Updates', duration: 3, buffer: 0, deliverable: 'Translation' },
       { name: 'Approval',           duration: 1, buffer: 0, deliverable: 'Translation' },
     ],
