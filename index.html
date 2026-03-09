@@ -34,7 +34,7 @@
 
   body {
     font-family: var(--font-mono);
-    background: var(--paper);
+    background: #ffffff;
     color: var(--ink);
     min-height: 100vh;
     padding: 2rem 1.5rem 4rem;
@@ -135,7 +135,7 @@
   /* ── PHASES TABLE ── */
   .phases-header {
     display: grid;
-    grid-template-columns: 2fr 1.2fr 1fr 1fr auto;
+    grid-template-columns: 2fr 1fr auto;
     gap: 0.5rem;
     padding: 0 0 0.4rem;
     border-bottom: 1px solid var(--warm-rule);
@@ -151,7 +151,7 @@
 
   .phase-row {
     display: grid;
-    grid-template-columns: 2fr 1.2fr 1fr 1fr auto;
+    grid-template-columns: 2fr 1fr auto;
     gap: 0.5rem;
     align-items: center;
     margin-bottom: 0.45rem;
@@ -492,7 +492,7 @@
   @media (max-width: 560px) {
     .field-row, .field-row.triple { grid-template-columns: 1fr; }
     .deliverable-grid { grid-template-columns: 1fr 1fr; }
-    .phases-header, .phase-row { grid-template-columns: 1.5fr 1fr 0.8fr 0.8fr auto; }
+    .phases-header, .phase-row { grid-template-columns: 2fr 1fr auto; }
     .milestone { grid-template-columns: 100px 1fr; }
   }
 
@@ -506,10 +506,6 @@
 <body>
 <div class="container">
 
-  <header>
-    <h1>Production <em>Timeline</em></h1>
-    <p>Animation &amp; Video · Schedule Generator</p>
-  </header>
 
   <!-- PROJECT INFO -->
   <div class="form-section">
@@ -589,9 +585,7 @@
     <h2>Project Phases</h2>
     <div class="phases-header">
       <span>Phase Name</span>
-      <span>Deliverable</span>
       <span>Duration (days)</span>
-      <span>Buffer (days)</span>
       <span></span>
     </div>
     <div id="phaseList"></div>
@@ -653,23 +647,23 @@ const PHASE_TEMPLATES = {
       { name: 'Script',             duration: 3, buffer: 0 },
       { name: 'Style Slides',       duration: 2, buffer: 0 },
       { name: 'Review',             duration: 2, buffer: 0 },
-      { name: 'Storyboards',        duration: 5, buffer: 0 },
+      { name: 'Storyboards',        duration: 4, buffer: 0 },
       { name: 'Review Rd 1',        duration: 2, buffer: 0 },
       { name: 'Storyboard Edits',   duration: 3, buffer: 0 },
       { name: 'Review Rd 2',        duration: 2, buffer: 0 },
       { name: 'VO',                 duration: 2, buffer: 0 },
-      { name: 'Animation',          duration: 7, buffer: 0 },
+      { name: 'Animation',          duration: 5, buffer: 0 },
       { name: 'Animation Review',   duration: 2, buffer: 0 },
       { name: 'Approval',           duration: 1, buffer: 0, deliverable: 'Video' },
     ],
     renewal: [
       { name: 'Storyboard Notes',   duration: 2, buffer: 0 },
-      { name: 'Storyboards',        duration: 5, buffer: 0 },
+      { name: 'Storyboards',        duration: 4, buffer: 0 },
       { name: 'Review Rd 1',        duration: 2, buffer: 0 },
       { name: 'Storyboard Edits',   duration: 3, buffer: 0 },
       { name: 'Review Rd 2',        duration: 2, buffer: 0 },
       { name: 'VO',                 duration: 2, buffer: 0 },
-      { name: 'Animation',          duration: 7, buffer: 0 },
+      { name: 'Animation',          duration: 5, buffer: 0 },
       { name: 'Animation Review',   duration: 2, buffer: 0 },
       { name: 'Approval',           duration: 1, buffer: 0, deliverable: 'Video' },
     ],
@@ -680,23 +674,23 @@ const PHASE_TEMPLATES = {
       { name: 'Script',             duration: 3, buffer: 0 },
       { name: 'Style Slides',       duration: 2, buffer: 0 },
       { name: 'Review',             duration: 2, buffer: 0 },
-      { name: 'Storyboards',        duration: 5, buffer: 0 },
+      { name: 'Storyboards',        duration: 4, buffer: 0 },
       { name: 'Review Rd 1',        duration: 2, buffer: 0 },
       { name: 'Storyboard Edits',   duration: 3, buffer: 0 },
       { name: 'Review Rd 2',        duration: 2, buffer: 0 },
       { name: 'VO',                 duration: 2, buffer: 0 },
-      { name: 'Animation',          duration: 7, buffer: 0 },
+      { name: 'Animation',          duration: 5, buffer: 0 },
       { name: 'Animation Review',   duration: 2, buffer: 0 },
       { name: 'Approval',           duration: 1, buffer: 0, deliverable: 'Presentation Video' },
     ],
     renewal: [
       { name: 'Storyboard Notes',   duration: 2, buffer: 0 },
-      { name: 'Storyboards',        duration: 5, buffer: 0 },
+      { name: 'Storyboards',        duration: 4, buffer: 0 },
       { name: 'Review Rd 1',        duration: 2, buffer: 0 },
       { name: 'Storyboard Edits',   duration: 3, buffer: 0 },
       { name: 'Review Rd 2',        duration: 2, buffer: 0 },
       { name: 'VO',                 duration: 2, buffer: 0 },
-      { name: 'Animation',          duration: 7, buffer: 0 },
+      { name: 'Animation',          duration: 5, buffer: 0 },
       { name: 'Animation Review',   duration: 2, buffer: 0 },
       { name: 'Approval',           duration: 1, buffer: 0, deliverable: 'Presentation Video' },
     ],
@@ -829,9 +823,9 @@ function addPhase(data = {}) {
       <input type="text" class="phase-name" placeholder="Phase name" value="${data.name||''}">
       ${trackLabel}
     </div>
-    ${buildDeliverableSelect(data.deliverable||'')}
+    <input type="hidden" class="phase-deliverable" value="${data.deliverable||''}">
+    <input type="hidden" class="phase-buffer" value="${data.buffer??0}">
     <input type="number" class="phase-duration" min="1" value="${data.duration||3}" placeholder="days">
-    <input type="number" class="phase-buffer" min="0" value="${data.buffer??0}" placeholder="days">
     <button class="btn-remove" onclick="removePhase('${id}')">✕</button>
   `;
   document.getElementById('phaseList').appendChild(row);
