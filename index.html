@@ -8,15 +8,22 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --ink: #1a1714;
-    --paper: #f5f0e8;
-    --warm: #e8dfc8;
-    --accent: #c4522a;
-    --accent-light: #f0ded5;
+    --ink: #08212D;
+    --paper: #FEFBF5;
+    --warm: #08212D;
+    --warm-text: #ffffff;
+    --accent: #67E74E;
+    --accent-light: #FBECEB;
     --rule: #c8bfaa;
-    --muted: #8a7f70;
-    --phase-1: #4a6741;
-    --phase-2: #c4522a;
+    --warm-rule: rgba(233, 240, 251, 0.2);
+    --muted: #5a7a8a;
+    --warm-muted: rgba(255, 255, 255, 0.65);
+    --phase-1: #44a55d;
+    --phase-2: #367ed4;
+    --phase-3: #d83a31;
+    --phase-4: #FFB21B;
+    --phase-5: #67E74E;
+    --phase-6: #08212D;
     --font-mono: ui-monospace, 'Cascadia Code', 'Menlo', 'Consolas', 'Courier New', monospace;
     --font-serif: 'Georgia', 'Times New Roman', serif;
     --phase-3: #2a5a7c;
@@ -68,7 +75,7 @@
   /* ── FORM ── */
   .form-section {
     background: var(--warm);
-    border: 1px solid var(--rule);
+    border: 1px solid var(--warm-rule);
     padding: 1.75rem;
     margin-bottom: 2rem;
   }
@@ -80,7 +87,7 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 1.25rem;
-    color: var(--muted);
+    color: var(--warm-muted);
   }
 
   .field-row {
@@ -98,7 +105,7 @@
     font-size: 0.68rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--warm-muted);
     margin-bottom: 0.35rem;
   }
 
@@ -107,17 +114,19 @@
   input[type="number"],
   select {
     width: 100%;
-    background: var(--paper);
-    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--warm-rule);
     border-radius: 0;
     padding: 0.5rem 0.65rem;
     font-family: var(--font-mono);
     font-size: 0.82rem;
-    color: var(--ink);
+    color: var(--warm-text);
     outline: none;
     transition: border-color 0.15s;
     appearance: none;
   }
+
+  input::placeholder { color: rgba(233,240,251,0.35); }
 
   input:focus, select:focus {
     border-color: var(--accent);
@@ -129,7 +138,7 @@
     grid-template-columns: 2fr 1.2fr 1fr 1fr auto;
     gap: 0.5rem;
     padding: 0 0 0.4rem;
-    border-bottom: 1px solid var(--rule);
+    border-bottom: 1px solid var(--warm-rule);
     margin-bottom: 0.5rem;
   }
 
@@ -137,7 +146,7 @@
     font-size: 0.62rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--warm-muted);
   }
 
   .phase-row {
@@ -168,8 +177,8 @@
 
   .btn-remove {
     background: none;
-    border: 1px solid var(--rule);
-    color: var(--muted);
+    border: 1px solid var(--warm-rule);
+    color: var(--warm-muted);
     cursor: pointer;
     padding: 0.4rem 0.55rem;
     font-size: 0.75rem;
@@ -185,8 +194,8 @@
 
   .btn-add {
     background: none;
-    border: 1px dashed var(--rule);
-    color: var(--muted);
+    border: 1px dashed var(--warm-rule);
+    color: var(--warm-muted);
     cursor: pointer;
     padding: 0.55rem 1rem;
     font-size: 0.72rem;
@@ -201,16 +210,17 @@
   .btn-add:hover {
     border-color: var(--accent);
     color: var(--accent);
-    background: var(--accent-light);
+    background: rgba(103,231,78,0.08);
   }
 
   .btn-generate {
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--accent);
+    color: var(--ink);
     border: none;
     padding: 0.85rem 2rem;
     font-family: var(--font-mono);
     font-size: 0.78rem;
+    font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     cursor: pointer;
@@ -220,7 +230,7 @@
   }
 
   .btn-generate:hover {
-    background: var(--accent);
+    background: #7fff6a;
   }
 
   /* ── DELIVERABLE CHECKBOXES ── */
@@ -241,8 +251,8 @@
   }
 
   .deliverable-check:hover {
-    border-color: var(--rule);
-    background: var(--paper);
+    border-color: var(--warm-rule);
+    background: rgba(255,255,255,0.05);
   }
 
   .deliverable-check input[type="checkbox"] {
@@ -255,6 +265,44 @@
 
   .deliverable-check span {
     font-size: 0.72rem;
+    color: var(--warm-text);
+  }
+
+  /* ── WARNING BANNER ── */
+  .warning-banner {
+    background: #fff8e6;
+    border: 2px solid var(--phase-4);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .warning-banner .warning-title {
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #8a5a00;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .warning-banner .warning-body {
+    font-size: 0.75rem;
+    color: #6b4800;
+    line-height: 1.6;
+  }
+
+  .warning-phase {
+    display: inline-block;
+    background: rgba(255,178,27,0.2);
+    border: 1px solid var(--phase-4);
+    color: #6b4800;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    padding: 0.15rem 0.5rem;
+    margin: 0.2rem 0.25rem 0.2rem 0;
   }
 
   /* ── OUTPUT ── */
@@ -396,7 +444,7 @@
 
   .summary-bar {
     background: var(--warm);
-    border: 1px solid var(--rule);
+    border: 1px solid var(--warm-rule);
     padding: 1rem 1.25rem;
     margin-top: 1.75rem;
     display: flex;
@@ -414,7 +462,7 @@
     font-family: var(--font-serif);
     font-size: 1.5rem;
     font-weight: 300;
-    color: var(--ink);
+    color: var(--warm-text);
     line-height: 1;
   }
 
@@ -422,7 +470,7 @@
     font-size: 0.62rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--warm-muted);
   }
 
   .btn-print {
@@ -476,7 +524,25 @@
         <input type="text" id="client" placeholder="e.g. Acme Co.">
       </div>
     </div>
-    <div class="field-row single">
+    <div class="field-row">
+      <div>
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" onchange="updateLiveFeedback()">
+      </div>
+      <div>
+        <label for="dueDate">Due Date</label>
+        <input type="date" id="dueDate" onchange="updateLiveFeedback()">
+      </div>
+    </div>
+    <div class="field-row">
+      <div>
+        <label for="workdays">Working Days / Week</label>
+        <select id="workdays" onchange="updateLiveFeedback()">
+          <option value="5" selected>5 days (Mon–Fri)</option>
+          <option value="6">6 days (Mon–Sat)</option>
+          <option value="7">7 days</option>
+        </select>
+      </div>
       <div>
         <label for="projectType">Project Type</label>
         <select id="projectType" onchange="onProjectTypeChange()">
@@ -486,43 +552,33 @@
         </select>
       </div>
     </div>
-    <div class="field-row">
-      <div>
-        <label for="startDate">Due Date</label>
-        <input type="date" id="startDate">
-      </div>
-      <div>
-        <label for="workdays">Working Days / Week</label>
-        <select id="workdays">
-          <option value="5" selected>5 days (Mon–Fri)</option>
-          <option value="6">6 days (Mon–Sat)</option>
-          <option value="7">7 days</option>
-        </select>
-      </div>
-    </div>
     <div class="field-row single" style="margin-top:0.25rem;">
-      <label style="display:block;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Deliverable Types</label>
-      <div style="display:flex;flex-wrap:wrap;gap:0.4rem 1.5rem;">
-        <label class="deliverable-check" style="display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;">
-          <input type="checkbox" class="primary-deliverable" value="Video" onchange="onProjectTypeChange()" style="width:14px;height:14px;accent-color:var(--accent);cursor:pointer;">
-          <span style="font-size:0.75rem;letter-spacing:0.04em;">Video</span>
-        </label>
-        <label class="deliverable-check" style="display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;">
-          <input type="checkbox" class="primary-deliverable" value="Presentation Video" onchange="onProjectTypeChange()" style="width:14px;height:14px;accent-color:var(--accent);cursor:pointer;">
-          <span style="font-size:0.75rem;letter-spacing:0.04em;">Presentation Video</span>
-        </label>
-        <label class="deliverable-check" style="display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;">
-          <input type="checkbox" class="primary-deliverable" value="Digital Postcard" onchange="onProjectTypeChange()" style="width:14px;height:14px;accent-color:var(--accent);cursor:pointer;">
-          <span style="font-size:0.75rem;letter-spacing:0.04em;">Digital Postcard</span>
-        </label>
-        <label class="deliverable-check" style="display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;border-left:1px solid var(--rule);padding-left:1.5rem;">
-          <input type="checkbox" id="includeLibrary" onchange="onProjectTypeChange()" style="width:14px;height:14px;accent-color:var(--accent);cursor:pointer;">
-          <span style="font-size:0.75rem;letter-spacing:0.04em;">Library Videos</span>
-        </label>
-        <label class="deliverable-check" style="display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;">
-          <input type="checkbox" id="includeTranslation" onchange="onProjectTypeChange()" style="width:14px;height:14px;accent-color:var(--accent);cursor:pointer;">
-          <span style="font-size:0.75rem;letter-spacing:0.04em;">Translation</span>
-        </label>
+      <label style="display:block;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm-muted);margin-bottom:0.5rem;">Deliverable Types</label>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;">
+        <div style="display:flex;flex-direction:column;gap:0.4rem;">
+          <label class="deliverable-check" style="display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;">
+            <input type="checkbox" class="primary-deliverable" value="Video" onchange="onProjectTypeChange()" style="width:14px;height:14px;accent-color:var(--accent);cursor:pointer;">
+            <span style="font-size:0.75rem;letter-spacing:0.04em;">Video</span>
+          </label>
+          <label class="deliverable-check" style="display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;">
+            <input type="checkbox" class="primary-deliverable" value="Presentation Video" onchange="onProjectTypeChange()" style="width:14px;height:14px;accent-color:var(--accent);cursor:pointer;">
+            <span style="font-size:0.75rem;letter-spacing:0.04em;">Presentation Video</span>
+          </label>
+          <label class="deliverable-check" style="display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;">
+            <input type="checkbox" class="primary-deliverable" value="Digital Postcard" onchange="onProjectTypeChange()" style="width:14px;height:14px;accent-color:var(--accent);cursor:pointer;">
+            <span style="font-size:0.75rem;letter-spacing:0.04em;">Digital Postcard</span>
+          </label>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.4rem;border-left:1px solid var(--warm-rule);padding-left:1.5rem;">
+          <label class="deliverable-check" style="display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;">
+            <input type="checkbox" id="includeLibrary" onchange="onProjectTypeChange()" style="width:14px;height:14px;accent-color:var(--accent);cursor:pointer;">
+            <span style="font-size:0.75rem;letter-spacing:0.04em;">Library Videos</span>
+          </label>
+          <label class="deliverable-check" style="display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;">
+            <input type="checkbox" id="includeTranslation" onchange="onProjectTypeChange()" style="width:14px;height:14px;accent-color:var(--accent);cursor:pointer;">
+            <span style="font-size:0.75rem;letter-spacing:0.04em;">Translation</span>
+          </label>
+        </div>
       </div>
     </div>
   </div>
@@ -540,40 +596,45 @@
     </div>
     <div id="phaseList"></div>
     <button class="btn-add" onclick="addPhase()">+ Add Phase</button>
+    <div id="liveFeedback" style="display:none;margin:0.75rem 0 0.5rem;padding:0.6rem 0.85rem;border-radius:4px;font-size:0.72rem;letter-spacing:0.04em;font-family:var(--font-mono);"></div>
     <button class="btn-generate" onclick="generate()">Generate Timeline →</button>
   </div>
 
   <!-- OUTPUT -->
   <div id="output">
+    <div id="timelineWarning" style="display:none;"></div>
     <div class="output-header">
       <h2 id="outTitle">—</h2>
       <div class="project-meta" id="outMeta"></div>
     </div>
     <div class="deliverables-note" id="outDeliverables"></div>
-    <ul class="timeline-list" id="milestoneList"></ul>
-    <div class="summary-bar" id="summaryBar"></div>
-    <div style="display:flex;gap:0.75rem;margin-top:1.5rem;flex-wrap:wrap;">
-      <button class="btn-print" onclick="window.print()">Print / Save as PDF</button>
-      <button class="btn-print" onclick="toggleEmailTable()" id="btnEmailTable">Show Email Version</button>
-    </div>
 
-    <!-- EMAIL TABLE -->
-    <div id="emailTable" style="display:none;margin-top:2rem;">
+    <!-- EMAIL TABLE (default view) -->
+    <div id="emailTable" style="margin-top:1.25rem;">
       <div style="border-bottom:2px solid var(--ink);padding-bottom:0.75rem;margin-bottom:1rem;display:flex;justify-content:space-between;align-items:flex-end;">
-        <span style="font-family:var(--font-serif);font-size:1.1rem;font-weight:300;">Email Version</span>
+        <span style="font-family:var(--font-serif);font-size:1.1rem;font-weight:300;">Timeline</span>
         <button class="btn-print" onclick="copyEmailText()" id="btnCopy">Copy to Clipboard</button>
       </div>
-      <p style="font-size:0.7rem;color:var(--muted);letter-spacing:0.05em;margin-bottom:1rem;">Paste directly into an email. Click any cell to edit before copying.</p>
-      <table id="emailTableBody" style="width:100%;border-collapse:collapse;font-family:var(--font-mono);font-size:0.8rem;">
-        <thead>
-          <tr style="border-bottom:2px solid var(--ink);">
-            <th style="text-align:left;padding:0.5rem 0.75rem 0.5rem 0;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);width:18%;">Party</th>
-            <th style="text-align:left;padding:0.5rem 0.75rem;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Task</th>
-            <th style="text-align:left;padding:0.5rem 0 0.5rem 0.75rem;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);width:14%;">Date</th>
-          </tr>
-        </thead>
+      <p style="font-size:0.7rem;color:var(--muted);letter-spacing:0.05em;margin-bottom:1rem;">Click any cell to edit before copying.</p>
+      <table id="emailTableBody" style="width:100%;max-width:550px;border-collapse:collapse;font-family:Verdana,sans-serif;font-size:0.72rem;">
         <tbody id="emailRows"></tbody>
       </table>
+
+      <!-- Hidden table used purely for clipboard copy — mirrors visible table exactly -->
+      <table id="copyTarget" style="position:absolute;left:-9999px;top:-9999px;border-collapse:collapse;"></table>
+    </div>
+
+    <div style="display:flex;gap:0.75rem;margin-top:1.5rem;flex-wrap:wrap;">
+      <button class="btn-print" onclick="toggleDetailedView()" id="btnDetailedView">Show Detailed Timeline</button>
+      <button class="btn-print" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+
+    <!-- DETAILED MILESTONE LIST (hidden by default) -->
+    <div id="detailedView" style="display:none;margin-top:2rem;">
+      <div style="border-bottom:2px solid var(--ink);padding-bottom:0.75rem;margin-bottom:0.25rem;">
+        <span style="font-family:var(--font-serif);font-size:1.1rem;font-weight:300;">Detailed Timeline</span>
+      </div>
+      <ul class="timeline-list" id="milestoneList"></ul>
     </div>
   </div>
 
@@ -589,24 +650,25 @@ const PHASE_TEMPLATES = {
   'Video': {
     new: [
       { name: 'Kickoff',            duration: 1, buffer: 0 },
-      { name: 'Script',             duration: 3, buffer: 2 },
-      { name: 'Style Slides',       duration: 2, buffer: 2 },
+      { name: 'Script',             duration: 3, buffer: 0 },
+      { name: 'Style Slides',       duration: 2, buffer: 0 },
       { name: 'Review',             duration: 2, buffer: 0 },
       { name: 'Storyboards',        duration: 5, buffer: 0 },
       { name: 'Review Rd 1',        duration: 2, buffer: 0 },
       { name: 'Storyboard Edits',   duration: 3, buffer: 0 },
       { name: 'Review Rd 2',        duration: 2, buffer: 0 },
-      { name: 'VO',                 duration: 2, buffer: 1 },
+      { name: 'VO',                 duration: 2, buffer: 0 },
       { name: 'Animation',          duration: 7, buffer: 0 },
       { name: 'Animation Review',   duration: 2, buffer: 0 },
       { name: 'Approval',           duration: 1, buffer: 0, deliverable: 'Video' },
     ],
     renewal: [
+      { name: 'Storyboard Notes',   duration: 2, buffer: 0 },
       { name: 'Storyboards',        duration: 5, buffer: 0 },
       { name: 'Review Rd 1',        duration: 2, buffer: 0 },
       { name: 'Storyboard Edits',   duration: 3, buffer: 0 },
       { name: 'Review Rd 2',        duration: 2, buffer: 0 },
-      { name: 'VO',                 duration: 2, buffer: 1 },
+      { name: 'VO',                 duration: 2, buffer: 0 },
       { name: 'Animation',          duration: 7, buffer: 0 },
       { name: 'Animation Review',   duration: 2, buffer: 0 },
       { name: 'Approval',           duration: 1, buffer: 0, deliverable: 'Video' },
@@ -615,24 +677,25 @@ const PHASE_TEMPLATES = {
   'Presentation Video': {
     new: [
       { name: 'Kickoff',            duration: 1, buffer: 0 },
-      { name: 'Script',             duration: 3, buffer: 2 },
-      { name: 'Style Slides',       duration: 2, buffer: 2 },
+      { name: 'Script',             duration: 3, buffer: 0 },
+      { name: 'Style Slides',       duration: 2, buffer: 0 },
       { name: 'Review',             duration: 2, buffer: 0 },
       { name: 'Storyboards',        duration: 5, buffer: 0 },
       { name: 'Review Rd 1',        duration: 2, buffer: 0 },
       { name: 'Storyboard Edits',   duration: 3, buffer: 0 },
       { name: 'Review Rd 2',        duration: 2, buffer: 0 },
-      { name: 'VO',                 duration: 2, buffer: 1 },
+      { name: 'VO',                 duration: 2, buffer: 0 },
       { name: 'Animation',          duration: 7, buffer: 0 },
       { name: 'Animation Review',   duration: 2, buffer: 0 },
       { name: 'Approval',           duration: 1, buffer: 0, deliverable: 'Presentation Video' },
     ],
     renewal: [
+      { name: 'Storyboard Notes',   duration: 2, buffer: 0 },
       { name: 'Storyboards',        duration: 5, buffer: 0 },
       { name: 'Review Rd 1',        duration: 2, buffer: 0 },
       { name: 'Storyboard Edits',   duration: 3, buffer: 0 },
       { name: 'Review Rd 2',        duration: 2, buffer: 0 },
-      { name: 'VO',                 duration: 2, buffer: 1 },
+      { name: 'VO',                 duration: 2, buffer: 0 },
       { name: 'Animation',          duration: 7, buffer: 0 },
       { name: 'Animation Review',   duration: 2, buffer: 0 },
       { name: 'Approval',           duration: 1, buffer: 0, deliverable: 'Presentation Video' },
@@ -640,14 +703,14 @@ const PHASE_TEMPLATES = {
   },
   'Digital Postcard': {
     new: [
-      { name: 'Content Collection', duration: 3, buffer: 1 },
+      { name: 'Content Collection', duration: 3, buffer: 0 },
       { name: 'Design',             duration: 4, buffer: 0 },
       { name: 'Review',             duration: 2, buffer: 0 },
       { name: 'Design Updates',     duration: 2, buffer: 0 },
       { name: 'Approval',           duration: 1, buffer: 0, deliverable: 'Digital Postcard' },
     ],
     renewal: [
-      { name: 'Content Collection', duration: 3, buffer: 1 },
+      { name: 'Content Collection', duration: 3, buffer: 0 },
       { name: 'Design',             duration: 4, buffer: 0 },
       { name: 'Review',             duration: 2, buffer: 0 },
       { name: 'Design Updates',     duration: 2, buffer: 0 },
@@ -664,12 +727,12 @@ const PHASE_TEMPLATES = {
   },
   'Translation': {
     new: [
-      { name: 'Translation',        duration: 5, buffer: 1 },
+      { name: 'Translation',        duration: 5, buffer: 0 },
       { name: 'Updates',            duration: 3, buffer: 0 },
       { name: 'Approval',           duration: 1, buffer: 0, deliverable: 'Translation' },
     ],
     renewal: [
-      { name: 'Translation',        duration: 5, buffer: 1 },
+      { name: 'Translation',        duration: 5, buffer: 0 },
       { name: 'Updates',            duration: 3, buffer: 0 },
       { name: 'Approval',           duration: 1, buffer: 0, deliverable: 'Translation' },
     ],
@@ -680,6 +743,7 @@ const DELIVERABLE_OPTIONS = ['Video','Presentation Video','Digital Postcard','Li
 
 // Phase ownership: who is responsible for each phase by name
 const PHASE_OWNER = {
+  'Storyboard Notes':   'Client',
   'Kickoff':            'Flimp',
   'Script':             'Client',
   'Style Slides':       'Flimp',
@@ -771,23 +835,83 @@ function addPhase(data = {}) {
     <button class="btn-remove" onclick="removePhase('${id}')">✕</button>
   `;
   document.getElementById('phaseList').appendChild(row);
+  updateLiveFeedback();
 }
 
 function removePhase(id) {
   const el = document.getElementById(id);
   if (el) el.remove();
+  updateLiveFeedback();
 }
 
-// Walk backwards by N workdays from a date
-function subtractWorkdays(date, days, perWeek) {
+function updateLiveFeedback() {
+  const fb = document.getElementById('liveFeedback');
+  const startVal = document.getElementById('startDate').value;
+  const dueVal = document.getElementById('dueDate').value;
+  const perWeek = parseInt(document.getElementById('workdays').value) || 5;
+
+  if (!startVal || !dueVal) { fb.style.display = 'none'; return; }
+
+  const start = new Date(startVal + 'T12:00:00');
+  const due = new Date(dueVal + 'T12:00:00');
+  if (due <= start) { fb.style.display = 'none'; return; }
+
+  // Count available workdays between start and due
+  let available = 0;
+  const cursor = new Date(start);
+  while (cursor < due) {
+    cursor.setDate(cursor.getDate() + 1);
+    const dow = cursor.getDay();
+    if (perWeek === 7) available++;
+    else if (perWeek === 6 && dow !== 0) available++;
+    else if (perWeek === 5 && dow !== 0 && dow !== 6) available++;
+  }
+
+  // Sum phase durations from the longest parallel track
+  const rows = [...document.querySelectorAll('.phase-row')];
+  const byTrack = {};
+  rows.forEach(row => {
+    const track = row.querySelector('.phase-track').value || 'main';
+    const dur = Math.max(1, parseInt(row.querySelector('.phase-duration').value) || 1);
+    const buf = Math.max(0, parseInt(row.querySelector('.phase-buffer').value) || 0);
+    byTrack[track] = (byTrack[track] || 0) + dur + buf;
+  });
+
+  // Parallel tracks (video + postcard) run simultaneously — longest wins
+  const videoTotal = (byTrack['video'] || 0);
+  const postcardTotal = (byTrack['postcard'] || 0);
+  const mainTotal = (byTrack['main'] || 0);
+  const addonTotal = (byTrack['addon'] || 0);
+  const needed = Math.max(videoTotal, postcardTotal, mainTotal) + addonTotal;
+
+  if (needed === 0) { fb.style.display = 'none'; return; }
+
+  const diff = available - needed;
+  fb.style.display = 'block';
+
+  if (diff >= 0) {
+    fb.style.background = 'rgba(103,231,78,0.12)';
+    fb.style.color = 'var(--accent)';
+    fb.style.border = '1px solid rgba(103,231,78,0.3)';
+    fb.innerHTML = `✓ ${needed} days needed &nbsp;·&nbsp; ${available} available &nbsp;·&nbsp; <strong>${diff} day${diff !== 1 ? 's' : ''} to spare</strong>`;
+  } else {
+    fb.style.background = 'rgba(216,58,49,0.22)';
+    fb.style.color = '#fff';
+    fb.style.border = '1px solid rgba(216,58,49,0.6)';
+    fb.innerHTML = `⚠ ${needed} days needed &nbsp;·&nbsp; ${available} available &nbsp;·&nbsp; <strong>${Math.abs(diff)} day${Math.abs(diff) !== 1 ? 's' : ''} over</strong>`;
+  }
+}
+
+// Walk forwards by N workdays from a date
+function addWorkdays(date, days, perWeek) {
   let d = new Date(date);
-  let subtracted = 0;
-  while (subtracted < days) {
-    d.setDate(d.getDate() - 1);
+  let added = 0;
+  while (added < days) {
+    d.setDate(d.getDate() + 1);
     const dow = d.getDay();
-    if (perWeek === 7) { subtracted++; continue; }
-    if (perWeek === 6 && dow !== 0) { subtracted++; continue; }
-    if (perWeek === 5 && dow !== 0 && dow !== 6) { subtracted++; continue; }
+    if (perWeek === 7) { added++; continue; }
+    if (perWeek === 6 && dow !== 0) { added++; continue; }
+    if (perWeek === 5 && dow !== 0 && dow !== 6) { added++; continue; }
   }
   return d;
 }
@@ -807,13 +931,15 @@ function fmtDay(d) {
 function generate() {
   const name = document.getElementById('projectName').value.trim() || 'Untitled Project';
   const client = document.getElementById('client').value.trim();
-  const dueDateVal = document.getElementById('startDate').value;
+  const startDateVal = document.getElementById('startDate').value;
+  const dueDateVal = document.getElementById('dueDate').value;
   const perWeek = parseInt(document.getElementById('workdays').value);
   const projectType = document.getElementById('projectType').value;
   const selectedPrimary = [...document.querySelectorAll('.primary-deliverable:checked')].map(i => i.value);
   const withTranslation = document.getElementById('includeTranslation').checked;
   const withLibrary = document.getElementById('includeLibrary').checked;
 
+  if (!startDateVal) { alert('Please set a start date.'); return; }
   if (!dueDateVal) { alert('Please set a due date.'); return; }
   if (selectedPrimary.length === 0) { alert('Please select at least one deliverable type.'); return; }
 
@@ -827,68 +953,59 @@ function generate() {
 
   if (!phases.length) { alert('Add at least one phase.'); return; }
 
+  const projectStart = new Date(startDateVal + 'T12:00:00');
   const dueDate = new Date(dueDateVal + 'T12:00:00');
 
   // Separate phases by track
-  const videoPhases   = phases.filter(p => p.track === 'video');
+  const videoPhases    = phases.filter(p => p.track === 'video');
   const postcardPhases = phases.filter(p => p.track === 'postcard');
-  const mainPhases    = phases.filter(p => p.track === 'main');
-  const addonPhases   = phases.filter(p => p.track === 'addon');
+  const mainPhases     = phases.filter(p => p.track === 'main');
+  const addonPhases    = phases.filter(p => p.track === 'addon');
 
   const isParallel = videoPhases.length > 0 && postcardPhases.length > 0;
 
-  // Helper: schedule a list of phases backwards from a cursor date
-  // Returns { schedule, projectStart } where schedule = [{ph, phaseStart, phaseEnd, bufferEnd}]
-  function scheduleBackwards(phaseList, fromDate) {
+  // Helper: schedule a list of phases forward from a cursor date
+  function scheduleForwards(phaseList, fromDate) {
     let cursor = new Date(fromDate);
     const sched = [];
-    for (let i = phaseList.length - 1; i >= 0; i--) {
-      const ph = phaseList[i];
+    phaseList.forEach(ph => {
+      const phaseStart = new Date(cursor);
+      const phaseEnd = addWorkdays(cursor, ph.duration, perWeek);
       let bufferEnd = null;
       if (ph.buffer > 0) {
-        bufferEnd = new Date(cursor);
-        cursor = subtractWorkdays(cursor, ph.buffer, perWeek);
+        bufferEnd = addWorkdays(phaseEnd, ph.buffer, perWeek);
+        cursor = new Date(bufferEnd);
+      } else {
+        cursor = new Date(phaseEnd);
       }
-      const phaseEnd = new Date(cursor);
-      const phaseStart = subtractWorkdays(cursor, ph.duration, perWeek);
-      sched.unshift({ ph, phaseStart, phaseEnd, bufferEnd });
-      cursor = new Date(phaseStart);
-    }
-    return { schedule: sched, trackStart: new Date(cursor) };
+      sched.push({ ph, phaseStart, phaseEnd, bufferEnd });
+    });
+    return { schedule: sched, trackEnd: new Date(cursor) };
   }
 
   let videoSchedule = [], postcardSchedule = [], mainSchedule = [], addonSchedule = [];
-  let projectStart, videoTrackStart, postcardTrackStart;
+  let videoTrackEnd, postcardTrackEnd;
 
   if (isParallel) {
-    // Addons chain off the end of the due date (after video track)
-    // Work backwards: due date → addons → video track end, and due date → postcard track end (independent)
-    // First figure out how much time addons need
-    let addonCursor = new Date(dueDate);
-    if (addonPhases.length > 0) {
-      const { schedule, trackStart } = scheduleBackwards(addonPhases, addonCursor);
-      addonSchedule = schedule;
-      addonCursor = new Date(trackStart); // video track must end by here
-    }
-
-    // Schedule video and postcard tracks both ending at addonCursor (or dueDate if no addons)
-    const videoResult = scheduleBackwards(videoPhases, addonCursor);
+    // Both primary tracks start on projectStart and run in parallel
+    const videoResult = scheduleForwards(videoPhases, projectStart);
     videoSchedule = videoResult.schedule;
-    videoTrackStart = videoResult.trackStart;
+    videoTrackEnd = videoResult.trackEnd;
 
-    const postcardResult = scheduleBackwards(postcardPhases, addonCursor);
+    const postcardResult = scheduleForwards(postcardPhases, projectStart);
     postcardSchedule = postcardResult.schedule;
-    postcardTrackStart = postcardResult.trackStart;
+    postcardTrackEnd = postcardResult.trackEnd;
 
-    // Project starts at the earlier of the two track starts
-    projectStart = videoTrackStart <= postcardTrackStart ? new Date(videoTrackStart) : new Date(postcardTrackStart);
-
+    // Addons chain off the end of the video track
+    if (addonPhases.length > 0) {
+      const addonResult = scheduleForwards(addonPhases, videoTrackEnd);
+      addonSchedule = addonResult.schedule;
+    }
   } else {
-    // Single sequential track: main or video-only or postcard-only
+    // Single sequential track
     const allSequential = [...mainPhases, ...videoPhases, ...postcardPhases, ...addonPhases];
-    const { schedule, trackStart } = scheduleBackwards(allSequential, dueDate);
-    mainSchedule = schedule;
-    projectStart = new Date(trackStart);
+    const result = scheduleForwards(allSequential, projectStart);
+    mainSchedule = result.schedule;
   }
 
   // --- Build milestone list, sorted by date ---
@@ -987,12 +1104,41 @@ function generate() {
   const totalDays = allSched.reduce((s, { ph }) => s + ph.duration, 0);
   const totalBuffer = allSched.reduce((s, { ph }) => s + ph.buffer, 0);
 
+  // --- Detect squeezed phases (phase end falls after due date) ---
+  const dueDateClean = new Date(dueDate); dueDateClean.setHours(0,0,0,0);
+  const squeezed = allSched.filter(({ phaseEnd }) => {
+    const d = new Date(phaseEnd); d.setHours(0,0,0,0);
+    return d > dueDateClean;
+  }).map(({ ph }) => ph.name);
+
+  // Latest end date across all tracks
+  const allEnds = allSched.map(({ bufferEnd, phaseEnd }) => bufferEnd || phaseEnd);
+  const projectedEnd = allEnds.length ? new Date(Math.max(...allEnds.map(d => d.getTime()))) : new Date(dueDate);
+
+  const warningEl = document.getElementById('timelineWarning');
+  if (squeezed.length > 0) {
+    warningEl.style.display = 'block';
+    warningEl.innerHTML = `
+      <div class="warning-banner">
+        <div class="warning-title">⚠ Insufficient time for proposed timeline</div>
+        <div class="warning-body">
+          <p style="margin-bottom:0.5rem;">Based on the phase durations, this project won't complete until <strong>${fmtDate(projectedEnd)}</strong> — after the due date of <strong>${fmtDate(dueDate)}</strong>. The following phase${squeezed.length > 1 ? 's are' : ' is'} squeezed:</p>
+          <div>${squeezed.map(n => `<span class="warning-phase">${n}</span>`).join('')}</div>
+          <p style="margin-top:0.6rem;">Consider pushing the due date, reducing phase durations, or removing phases to make the timeline viable.</p>
+        </div>
+      </div>
+    `;
+  } else {
+    warningEl.style.display = 'none';
+    warningEl.innerHTML = '';
+  }
+
   // --- Render ---
   const ptLabel = projectType ? projectType.charAt(0).toUpperCase()+projectType.slice(1) : '';
   const deliverableLabel = [...selectedPrimary, withLibrary ? 'Library Videos' : '', withTranslation ? 'Translation' : ''].filter(Boolean).join(' + ');
   document.getElementById('outTitle').textContent = name;
   document.getElementById('outMeta').innerHTML =
-    `${client ? client + '<br>' : ''}${deliverableLabel ? deliverableLabel + ' · ' : ''}${ptLabel}<br>Due: ${fmtDate(dueDate)}<br>${perWeek}‑day work week`;
+    `${client ? client + '<br>' : ''}${deliverableLabel ? deliverableLabel + ' · ' : ''}${ptLabel}<br>${startDateVal ? 'Start: ' + fmtDate(new Date(startDateVal+'T12:00:00')) + '<br>' : ''}Due: ${fmtDate(dueDate)}<br>${perWeek}‑day work week`;
 
   document.getElementById('outDeliverables').textContent =
     deliverableLabel
@@ -1009,7 +1155,14 @@ function generate() {
     const li = document.createElement('li');
     li.className = 'milestone';
     if (m.type === 'wrap') li.style.background = 'var(--accent-light)';
+
+    // Flag squeezed phases
+    const mDate = new Date(m.date); mDate.setHours(0,0,0,0);
+    const isSqueezed = mDate > dueDateClean && m.type !== 'kickoff' && m.type !== 'wrap';
+    if (isSqueezed) li.style.opacity = '0.6';
+
     const tagHtml = m.tags.map(t => `<span class="milestone-tag tag-${t}">${t}</span>`).join('');
+    const squeezedTag = isSqueezed ? `<span class="milestone-tag" style="border-color:var(--phase-4);color:var(--phase-4);">squeezed</span>` : '';
     const trackBadge = m.track === 'video' ? `<span class="milestone-tag" style="border-color:var(--phase-3);color:var(--phase-3);">video</span>`
                      : m.track === 'postcard' ? `<span class="milestone-tag" style="border-color:var(--phase-4);color:var(--phase-4);">postcard</span>`
                      : '';
@@ -1027,21 +1180,11 @@ function generate() {
         </div>
         <div class="milestone-title">${m.title}</div>
         <div class="milestone-detail">${m.detail}</div>
-        ${trackBadge}${tagHtml}
+        ${trackBadge}${squeezedTag}${tagHtml}
       </div>
     `;
     list.appendChild(li);
   });
-
-  const totalCalDays = Math.round((dueDate - projectStart) / (1000*60*60*24));
-  document.getElementById('summaryBar').innerHTML = `
-    <div class="summary-stat"><span class="val">${fmtDateShort(projectStart)}</span><span class="lbl">Project Start</span></div>
-    <div class="summary-stat"><span class="val">${phases.length}</span><span class="lbl">Phases</span></div>
-    <div class="summary-stat"><span class="val">${totalDays}</span><span class="lbl">Working Days</span></div>
-    <div class="summary-stat"><span class="val">${totalBuffer}</span><span class="lbl">Buffer Days</span></div>
-    <div class="summary-stat"><span class="val">${totalCalDays}</span><span class="lbl">Calendar Days Total</span></div>
-    <div class="summary-stat"><span class="val">${fmtDateShort(dueDate)}</span><span class="lbl">Due Date</span></div>
-  `;
 
   // --- Build email table rows ---
   // One row per phase-start milestone (represents the task and its due date)
@@ -1052,19 +1195,45 @@ function generate() {
   // Title row
   const titleRow = document.createElement('tr');
   titleRow.innerHTML = `
-    <td colspan="3" contenteditable="true" style="padding:0.75rem 0.75rem 0.75rem 0;font-family:var(--font-serif);font-size:1rem;font-weight:600;border-bottom:1px solid var(--rule);">${name}${client ? ' — ' + client : ''}</td>
+    <td colspan="4" contenteditable="true" style="padding:0.5rem 0.75rem 0.5rem 0;font-family:Verdana,sans-serif;font-size:0.85rem;font-weight:600;border-bottom:1px solid #ccc;">${name}${client ? ' — ' + client : ''}</td>
   `;
   emailRows.appendChild(titleRow);
 
+  // Column headers — sit under the project title
+  const colHeaderRow = document.createElement('tr');
+  colHeaderRow.innerHTML = `
+    <th style="text-align:left;padding:0.35rem 0.75rem 0.35rem 0;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border-bottom:2px solid #000;width:18%;font-family:Verdana,sans-serif;">Party</th>
+    <th style="text-align:left;padding:0.35rem 0.75rem;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border-bottom:2px solid #000;width:12%;font-family:Verdana,sans-serif;">Deliverable</th>
+    <th style="text-align:left;padding:0.35rem 0.75rem;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border-bottom:2px solid #000;width:40%;font-family:Verdana,sans-serif;">Task</th>
+    <th style="text-align:left;padding:0.35rem 0 0.35rem 0.5rem;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border-bottom:2px solid #000;width:10%;font-family:Verdana,sans-serif;">Due Date</th>
+  `;
+  emailRows.appendChild(colHeaderRow);
+
   // One row per phase, using the sorted milestone list (phase-start entries only, plus wrap)
   const emailMilestones = milestones.filter(m => m.type === 'phase-start' || m.type === 'wrap');
+
+  const trackLabels = {
+    video: 'Video',
+    postcard: 'DP',
+    main: '',
+  };
 
   emailMilestones.forEach((m, i) => {
     const isWrap = m.type === 'wrap';
     const clientLabel = client || 'Client';
     const owner = isWrap ? 'Flimp' : (PHASE_OWNER[m.phase] === 'Client' ? clientLabel : 'Flimp');
     const taskLabel = isWrap ? 'Final deliverables complete' : m.phase;
-    // Use phaseEnd date: find the next milestone after this phase-start that marks its close
+    // For addons, use the phase's own deliverable name (Translation / Library Videos)
+    let deliverableLabel = '';
+    if (!isWrap) {
+      if (m.track === 'addon') {
+        // Find the phase object to get its deliverable field
+        const ph = phases.find(p => p.name === m.phase);
+        deliverableLabel = ph?.deliverable || m.phase;
+      } else {
+        deliverableLabel = trackLabels[m.track] || '';
+      }
+    }
     let displayDate = m.date;
     if (!isWrap) {
       const nextClose = milestones.find(x =>
@@ -1074,61 +1243,67 @@ function generate() {
       if (nextClose) displayDate = nextClose.date;
     }
 
-    const isEven = i % 2 === 0;
-    const ownerColor = owner === 'Flimp' ? 'var(--phase-3)' : 'var(--accent)';
     const tr = document.createElement('tr');
-    tr.style.background = isEven ? 'transparent' : 'var(--warm)';
     tr.innerHTML = `
-      <td contenteditable="true" style="padding:0.5rem 0.75rem 0.5rem 0;border-bottom:1px solid var(--rule);color:${ownerColor};font-weight:500;">${owner}</td>
-      <td contenteditable="true" style="padding:0.5rem 0.75rem;border-bottom:1px solid var(--rule);">${taskLabel}</td>
-      <td contenteditable="true" style="padding:0.5rem 0 0.5rem 0.75rem;border-bottom:1px solid var(--rule);white-space:nowrap;">${fmtDateShort(displayDate)}</td>
+      <td contenteditable="true" style="padding:0.3rem 0.75rem 0.3rem 0;border-bottom:1px solid #ccc;font-size:0.72rem;font-family:Verdana,sans-serif;">${owner}</td>
+      <td contenteditable="true" style="padding:0.3rem 0.75rem;border-bottom:1px solid #ccc;font-size:0.68rem;font-family:Verdana,sans-serif;">${deliverableLabel}</td>
+      <td contenteditable="true" style="padding:0.3rem 0.75rem;border-bottom:1px solid #ccc;font-size:0.72rem;font-family:Verdana,sans-serif;max-width:180px;">${taskLabel}</td>
+      <td contenteditable="true" style="padding:0.3rem 0 0.3rem 0.5rem;border-bottom:1px solid #ccc;font-size:0.72rem;font-family:Verdana,sans-serif;white-space:nowrap;">${fmtDateShort(displayDate)}</td>
     `;
     emailRows.appendChild(tr);
   });
 
-  // Hide email table on regenerate
-  document.getElementById('emailTable').style.display = 'none';
-  document.getElementById('btnEmailTable').textContent = 'Show Email Version';
+  // Summary row inside the table so it's included in selection copy
+  const totalCalDays = Math.round((projectedEnd - projectStart) / (1000*60*60*24));
+  const summaryTr = document.createElement('tr');
+  summaryTr.innerHTML = `
+    <td colspan="4" style="padding:0.6rem 0.75rem 0.4rem 0;border-top:2px solid #000;font-size:0.68rem;letter-spacing:0.04em;font-family:Verdana,sans-serif;">
+      Project Start: ${fmtDateShort(projectStart)}&nbsp;&nbsp;·&nbsp;&nbsp;Working Days: ${totalDays}&nbsp;&nbsp;·&nbsp;&nbsp;Projected End: ${fmtDateShort(projectedEnd)}<br>Due Date: ${fmtDateShort(dueDate)}
+    </td>
+  `;
+  emailRows.appendChild(summaryTr);
+  document.getElementById('detailedView').style.display = 'none';
+  document.getElementById('btnDetailedView').textContent = 'Show Detailed Timeline';
 
   const out = document.getElementById('output');
   out.classList.add('visible');
   out.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-function toggleEmailTable() {
-  const el = document.getElementById('emailTable');
-  const btn = document.getElementById('btnEmailTable');
+function toggleDetailedView() {
+  const el = document.getElementById('detailedView');
+  const btn = document.getElementById('btnDetailedView');
   const hidden = el.style.display === 'none';
   el.style.display = hidden ? 'block' : 'none';
-  btn.textContent = hidden ? 'Hide Email Version' : 'Show Email Version';
+  btn.textContent = hidden ? 'Hide Detailed Timeline' : 'Show Detailed Timeline';
   if (hidden) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function copyEmailText() {
-  const projectTitle = document.querySelector('#emailRows tr:first-child td').textContent.trim();
-  const rows = [...document.querySelectorAll('#emailRows tr')].slice(1);
-  const lines = rows.map(tr => {
-    const cells = [...tr.querySelectorAll('td')].map(td => td.textContent.trim());
-    return cells.join('\t');
-  });
-  const text = projectTitle + '\n' + lines.join('\n');
+  const btn = document.getElementById('btnCopy');
 
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.getElementById('btnCopy');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy to Clipboard', 2000);
-  }).catch(() => {
-    // Fallback for older browsers
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    const btn = document.getElementById('btnCopy');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy to Clipboard', 2000);
-  });
+  // Select the visible email table so the user can Cmd/Ctrl+C
+  const table = document.getElementById('emailTableBody');
+  const range = document.createRange();
+  range.selectNode(table);
+  const sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+
+  // Try execCommand first (works in most browsers when content is selected)
+  const success = document.execCommand('copy');
+  if (success) {
+    sel.removeAllRanges();
+    btn.textContent = '✓ Copied — paste into email';
+    setTimeout(() => btn.textContent = 'Copy to Clipboard', 3000);
+  } else {
+    // Selection is still active — tell user to copy manually
+    btn.textContent = 'Table selected — press Cmd+C / Ctrl+C';
+    setTimeout(() => {
+      sel.removeAllRanges();
+      btn.textContent = 'Copy to Clipboard';
+    }, 4000);
+  }
 }
 
 // Init
@@ -1138,6 +1313,11 @@ window.addEventListener('DOMContentLoaded', () => {
   const mm = String(today.getMonth()+1).padStart(2,'0');
   const dd = String(today.getDate()).padStart(2,'0');
   document.getElementById('startDate').value = `${yyyy}-${mm}-${dd}`;
+  document.getElementById('phaseList').addEventListener('input', e => {
+    if (e.target.classList.contains('phase-duration') || e.target.classList.contains('phase-buffer')) {
+      updateLiveFeedback();
+    }
+  });
 });
 </script>
 </body>
