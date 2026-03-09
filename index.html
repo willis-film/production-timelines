@@ -24,8 +24,8 @@
     --phase-4: #FFB21B;
     --phase-5: #67E74E;
     --phase-6: #08212D;
-    --font-mono: ui-monospace, 'Cascadia Code', 'Menlo', 'Consolas', 'Courier New', monospace;
-    --font-serif: 'Georgia', 'Times New Roman', serif;
+    --font-mono: Verdana, sans-serif;
+    --font-serif: Verdana, sans-serif;
     --phase-3: #2a5a7c;
     --phase-4: #7c4a2a;
     --phase-5: #5a4a7c;
@@ -33,7 +33,7 @@
   }
 
   body {
-    font-family: var(--font-mono);
+    font-family: Verdana, sans-serif;
     background: #ffffff;
     color: var(--ink);
     min-height: 100vh;
@@ -462,7 +462,7 @@
 
   @media print {
     body { background: white; padding: 0; }
-    .form-section, .btn-generate, .btn-print { display: none; }
+    .form-section, .btn-generate, .btn-print, header { display: none; }
     #output { display: block !important; }
   }
 </style>
