@@ -9,32 +9,28 @@
 
   :root {
     --ink: #08212D;
-    --paper: #FEFBF5;
-    --warm: #08212D;
-    --warm-text: #ffffff;
+    --page-bg: #f0f4f0;
+    --card-bg: #08212D;
     --accent: #67E74E;
-    --accent-light: #FBECEB;
-    --rule: #c8bfaa;
-    --warm-rule: rgba(233, 240, 251, 0.2);
+    --accent-hover: #7fff6a;
+    --rule: #d0d8d0;
+    --warm-rule: rgba(255,255,255,0.15);
     --muted: #5a7a8a;
-    --warm-muted: rgba(255, 255, 255, 0.65);
+    --warm-muted: rgba(255,255,255,0.6);
+    --warm-text: #ffffff;
     --phase-1: #44a55d;
     --phase-2: #367ed4;
     --phase-3: #d83a31;
     --phase-4: #FFB21B;
     --phase-5: #67E74E;
     --phase-6: #08212D;
-    --font-mono: Verdana, sans-serif;
-    --font-serif: Verdana, sans-serif;
-    --phase-3: #2a5a7c;
-    --phase-4: #7c4a2a;
-    --phase-5: #5a4a7c;
-    --phase-6: #7c6a2a;
+    --radius: 16px;
+    --radius-sm: 8px;
   }
 
   body {
     font-family: Verdana, sans-serif;
-    background: #ffffff;
+    background: var(--page-bg);
     color: var(--ink);
     min-height: 100vh;
     padding: 2rem 1.5rem 4rem;
@@ -46,45 +42,44 @@
   }
 
   header {
-    border-bottom: 2px solid var(--ink);
-    padding-bottom: 1.25rem;
-    margin-bottom: 2.5rem;
+    padding: 1.5rem 0 1.75rem;
+    margin-bottom: 1.75rem;
   }
 
   header h1 {
-    font-family: var(--font-serif);
-    font-size: 2.4rem;
-    font-weight: 300;
+    font-size: 2rem;
+    font-weight: 700;
     letter-spacing: -0.02em;
-    line-height: 1.1;
+    line-height: 1.15;
+    color: var(--ink);
   }
 
   header h1 em {
-    font-style: italic;
+    font-style: normal;
     color: var(--accent);
+    -webkit-text-stroke: 0;
   }
 
   header p {
     font-size: 0.72rem;
     color: var(--muted);
-    margin-top: 0.5rem;
-    letter-spacing: 0.08em;
+    margin-top: 0.45rem;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 
   /* ── FORM ── */
   .form-section {
-    background: var(--warm);
-    border: 1px solid var(--warm-rule);
+    background: var(--card-bg);
+    border-radius: var(--radius);
     padding: 1.75rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
   }
 
   .form-section h2 {
-    font-family: var(--font-serif);
-    font-weight: 600;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-bottom: 1.25rem;
     color: var(--warm-muted);
@@ -102,11 +97,12 @@
 
   label {
     display: block;
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--warm-muted);
     margin-bottom: 0.35rem;
+    font-weight: 600;
   }
 
   input[type="text"],
@@ -114,22 +110,23 @@
   input[type="number"],
   select {
     width: 100%;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid var(--warm-rule);
-    border-radius: 0;
-    padding: 0.5rem 0.65rem;
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
+    background: rgba(255,255,255,0.1);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 0.75rem;
+    font-family: Verdana, sans-serif;
+    font-size: 0.8rem;
     color: var(--warm-text);
     outline: none;
-    transition: border-color 0.15s;
+    transition: border-color 0.15s, background 0.15s;
     appearance: none;
   }
 
-  input::placeholder { color: rgba(233,240,251,0.35); }
+  input::placeholder { color: rgba(255,255,255,0.3); }
 
   input:focus, select:focus {
     border-color: var(--accent);
+    background: rgba(255,255,255,0.14);
   }
 
   /* ── PHASES TABLE ── */
@@ -143,10 +140,11 @@
   }
 
   .phases-header span {
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--warm-muted);
+    font-weight: 600;
   }
 
   .phase-row {
@@ -177,12 +175,13 @@
 
   .btn-remove {
     background: none;
-    border: 1px solid var(--warm-rule);
+    border: 1.5px solid var(--warm-rule);
+    border-radius: var(--radius-sm);
     color: var(--warm-muted);
     cursor: pointer;
     padding: 0.4rem 0.55rem;
     font-size: 0.75rem;
-    font-family: var(--font-mono);
+    font-family: Verdana, sans-serif;
     transition: all 0.15s;
     line-height: 1;
   }
@@ -194,12 +193,13 @@
 
   .btn-add {
     background: none;
-    border: 1px dashed var(--warm-rule);
+    border: 1.5px dashed rgba(255,255,255,0.2);
+    border-radius: var(--radius-sm);
     color: var(--warm-muted);
     cursor: pointer;
     padding: 0.55rem 1rem;
-    font-size: 0.72rem;
-    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-family: Verdana, sans-serif;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     width: 100%;
@@ -217,35 +217,32 @@
     background: var(--accent);
     color: var(--ink);
     border: none;
-    padding: 0.85rem 2rem;
-    font-family: var(--font-mono);
+    border-radius: 100px;
+    padding: 0.9rem 2rem;
+    font-family: Verdana, sans-serif;
     font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     cursor: pointer;
     width: 100%;
     margin-top: 1.5rem;
-    transition: background 0.15s;
+    transition: background 0.15s, transform 0.1s;
   }
 
   .btn-generate:hover {
-    background: #7fff6a;
+    background: var(--accent-hover);
+    transform: translateY(-1px);
   }
 
   /* ── DELIVERABLE CHECKBOXES ── */
-  .deliverable-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.4rem;
-  }
-
   .deliverable-check {
     display: flex;
     align-items: center;
     gap: 0.4rem;
     cursor: pointer;
     padding: 0.4rem 0.5rem;
+    border-radius: var(--radius-sm);
     border: 1px solid transparent;
     transition: all 0.15s;
   }
@@ -268,7 +265,6 @@
     color: var(--warm-text);
   }
 
-  /* ── WARNING BANNER ── */
   /* ── OUTPUT ── */
   #output {
     display: none;
@@ -294,9 +290,8 @@
   }
 
   .output-header h2 {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 300;
+    font-size: 1.4rem;
+    font-weight: 700;
   }
 
   .output-header .project-meta {
@@ -312,7 +307,6 @@
     letter-spacing: 0.06em;
     padding: 0.4rem 0 1.25rem;
     border-bottom: 1px solid var(--rule);
-    margin-bottom: 0;
   }
 
   .timeline-list {
@@ -323,13 +317,10 @@
     display: grid;
     grid-template-columns: 130px 1fr;
     border-bottom: 1px solid var(--rule);
-    padding: 0;
     position: relative;
   }
 
-  .milestone:last-child {
-    border-bottom: none;
-  }
+  .milestone:last-child { border-bottom: none; }
 
   .milestone-date-col {
     padding: 1.1rem 1.25rem 1.1rem 0;
@@ -348,7 +339,7 @@
     display: block;
     font-size: 0.88rem;
     color: var(--ink);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0;
   }
 
@@ -379,7 +370,7 @@
 
   .milestone-title {
     font-size: 0.92rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--ink);
     margin-bottom: 0.15rem;
   }
@@ -399,6 +390,7 @@
     margin-top: 0.3rem;
     margin-right: 0.3rem;
     border: 1px solid;
+    border-radius: 100px;
   }
 
   .tag-buffer { border-color: var(--muted); color: var(--muted); }
@@ -406,56 +398,29 @@
   .tag-deliverable { border-color: var(--phase-3); color: var(--phase-3); }
   .tag-kickoff { border-color: var(--phase-1); color: var(--phase-1); }
 
-  .summary-bar {
-    background: var(--warm);
-    border: 1px solid var(--warm-rule);
-    padding: 1rem 1.25rem;
-    margin-top: 1.75rem;
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .summary-stat {
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-  }
-
-  .summary-stat .val {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: var(--warm-text);
-    line-height: 1;
-  }
-
-  .summary-stat .lbl {
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--warm-muted);
-  }
-
   .btn-print {
     background: none;
-    border: 1px solid var(--ink);
+    border: 1.5px solid var(--ink);
+    border-radius: 100px;
     color: var(--ink);
     padding: 0.55rem 1.25rem;
-    font-family: var(--font-mono);
+    font-family: Verdana, sans-serif;
     font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     cursor: pointer;
     margin-top: 1.5rem;
     transition: all 0.15s;
   }
 
-  .btn-print:hover { background: var(--ink); color: var(--paper); }
+  .btn-print:hover {
+    background: var(--ink);
+    color: #fff;
+  }
 
   @media (max-width: 560px) {
     .field-row, .field-row.triple { grid-template-columns: 1fr; }
-    .deliverable-grid { grid-template-columns: 1fr 1fr; }
     .phases-header, .phase-row { grid-template-columns: 2fr 1fr auto; }
     .milestone { grid-template-columns: 100px 1fr; }
   }
