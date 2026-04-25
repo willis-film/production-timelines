@@ -8,7 +8,6 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --dark:#08212D;
-  --dark-mid:#122e3d;
   --lime:#67E74E;
   --lime-dark:#4cc235;
   --blue:#367ED4;
@@ -24,7 +23,6 @@
   --text:#08212D;
   --text-secondary:#3d5a68;
   --text-tertiary:#7a96a3;
-  --bg:#F2F8F0;
   --surface:#ffffff;
   --radius:8px;
   --radius-lg:12px;
@@ -34,20 +32,19 @@ body{font-family:Calibri,sans-serif;background:#F2F8F0;color:var(--text);min-hei
 
 /* ── Header ── */
 .app-header{background:var(--dark);padding:0 2rem;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.logo{display:flex;align-items:center;gap:10px}
-.logo-mark{width:28px;height:28px;background:#ffffff20;border-radius:6px;display:flex;align-items:center;justify-content:center}
-.logo-mark svg{width:16px;height:16px;fill:#fff}
-.logo-text{font-size:15px;font-weight:600;color:#fff;letter-spacing:.02em}
-.logo-sub{font-size:12px;color:#ffffff60;margin-left:2px}
-.header-right{font-size:12px;color:#ffffff50}
+.logo{display:flex;align-items:center;gap:6px}
+.logo-wordmark{font-size:21px;font-weight:700;color:var(--lime);letter-spacing:-.01em}
+.logo-sub{font-size:12px;color:#ffffff45;margin-left:4px;letter-spacing:.02em}
+.header-right{font-size:12px;color:#ffffff40}
 
 /* ── Layout ── */
 .page{max-width:900px;margin:0 auto;padding:2rem 1.5rem 4rem}
 
 /* ── Section titles ── */
-.section-head{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:1rem;flex-wrap:wrap}
 .section-num{width:22px;height:22px;border-radius:50%;background:var(--dark);color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .section-title{font-size:13px;font-weight:600;color:var(--text);letter-spacing:.03em;text-transform:uppercase}
+.section-hint{font-size:12px;color:var(--text-tertiary)}
 
 /* ── Cards ── */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.25rem}
@@ -70,17 +67,10 @@ body{font-family:Calibri,sans-serif;background:#F2F8F0;color:var(--text);min-hei
 .net-new-label .nn-hint{font-size:11px;color:var(--text-tertiary);margin-left:2px}
 .net-new-label.active .nn-hint{color:var(--blue)}
 
-/* ── Days toggle ── */
-.days-group{display:flex;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;height:38px}
-.day-btn{flex:1;border:none;border-right:1px solid var(--border);background:#fff;color:var(--text-secondary);font-family:Calibri,sans-serif;font-size:13px;cursor:pointer;transition:all .15s}
-.day-btn:last-child{border-right:none}
-.day-btn:hover{background:var(--green-bg)}
-.day-btn.active{background:var(--dark);color:var(--lime);font-weight:600}
-
 /* ── Deliverable rows ── */
 .row-headers{display:grid;grid-template-columns:1fr 72px 108px 110px 32px;gap:8px;margin-bottom:6px;padding:0 2px}
 .row-headers span{font-size:11px;font-weight:600;color:var(--text-tertiary);letter-spacing:.04em;text-transform:uppercase}
-.row-headers span:nth-child(2),.row-headers span:nth-child(3){text-align:center}
+.row-headers span:nth-child(2),.row-headers span:nth-child(3),.row-headers span:nth-child(4){text-align:center}
 .del-row{display:grid;grid-template-columns:1fr 72px 108px 110px 32px;gap:8px;align-items:center;margin-bottom:8px}
 .del-row select{font-family:Calibri,sans-serif;font-size:13px;height:36px;padding:0 8px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);color:var(--text);width:100%;transition:border-color .15s}
 .del-row select:focus{outline:none;border-color:var(--blue)}
@@ -89,7 +79,7 @@ body{font-family:Calibri,sans-serif;background:#F2F8F0;color:var(--text);min-hei
 .nr-toggle{display:flex;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;height:36px}
 .nr-btn{flex:1;border:none;background:#fff;color:var(--text-secondary);font-family:Calibri,sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .12s;border-right:1px solid var(--border)}
 .nr-btn:last-child{border-right:none}
-.nr-toggle.disabled{opacity:.35;pointer-events:none;cursor:not-allowed}
+.nr-toggle.disabled{opacity:.35;pointer-events:none}
 .nr-toggle.disabled .nr-btn{background:#f5f5f5;color:#aaa}
 .nr-btn.n-active{background:var(--dark);color:var(--lime)}
 .nr-btn.r-active{background:var(--green);color:#fff}
@@ -102,105 +92,48 @@ body{font-family:Calibri,sans-serif;background:#F2F8F0;color:var(--text);min-hei
 .add-row-btn{width:100%;height:36px;border:1px dashed var(--border);border-radius:var(--radius);background:transparent;color:var(--text-tertiary);font-family:Calibri,sans-serif;font-size:13px;cursor:pointer;margin-top:4px;transition:all .15s}
 .add-row-btn:hover{border-color:var(--blue);color:var(--text)}
 
-/* ── Checkboxes ── */
+/* ── Pills ── */
 .pill-grid{display:flex;flex-wrap:wrap;gap:8px}
 .pill-item{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1.5px solid var(--border);border-radius:20px;cursor:pointer;transition:all .18s;user-select:none;font-size:13px;color:var(--text-secondary);background:var(--surface);font-family:Calibri,sans-serif}
 .pill-item:hover{border-color:var(--blue);color:var(--text);background:var(--blue-bg)}
 .pill-item.checked{border-color:var(--dark);background:var(--dark);color:var(--lime);font-weight:600}
-.pill-item .pill-check{width:14px;height:14px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .18s}
+.pill-check{width:14px;height:14px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .18s}
 .pill-item.checked .pill-check{background:var(--lime);border-color:var(--lime)}
 .pill-item.checked .pill-check::after{content:'';width:4px;height:7px;border:2px solid var(--dark);border-top:none;border-left:none;transform:rotate(45deg) translate(-1px,-1px);display:block}
 
-/* ── Generate button ── */
+/* ── Buttons ── */
+.preview-btn{width:100%;height:44px;background:#fff;border:1.5px solid var(--dark);border-radius:var(--radius-lg);color:var(--dark);font-family:Calibri,sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;margin-top:1.25rem}
+.preview-btn:hover{background:var(--green-bg)}
 .generate-wrap{margin-top:1.5rem}
-.generate-btn{width:100%;height:48px;background:var(--lime);border:none;border-radius:var(--radius-lg);color:var(--dark);font-family:Calibri,sans-serif;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:.02em;transition:all .2s;position:relative;overflow:hidden}
-.generate-btn:hover{background:var(--lime-dark)}
-.generate-btn:active{transform:scale(.99)}
+.generate-btn{width:100%;height:48px;background:var(--lime);border:none;border-radius:var(--radius-lg);color:var(--dark);font-family:Calibri,sans-serif;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:.02em;transition:all .2s}
+.generate-btn:hover:not(:disabled){background:var(--lime-dark)}
+.generate-btn:active:not(:disabled){transform:scale(.99)}
+.generate-btn:disabled{opacity:.4;cursor:not-allowed}
 
 /* ── Divider ── */
 .section-divider{height:1px;background:var(--border-light);margin:2rem 0}
 
-/* ── Timeline output ── */
-#timelineOutput{display:none}
-.tl-header{background:var(--dark);border-radius:var(--radius-lg);padding:1.5rem 1.75rem;margin-bottom:1rem;display:flex;justify-content:space-between;align-items:flex-start}
-.tl-header-left .tl-project{font-size:18px;font-weight:600;color:#fff}
-.tl-header-left .tl-client{font-size:13px;color:#ffffff80;margin-top:3px}
-.tl-header-left .tl-badges{display:flex;gap:6px;margin-top:10px}
-.tl-badge{font-size:11px;padding:3px 9px;border-radius:20px;background:#ffffff18;color:#ffffffcc;font-weight:500}
-.tl-badge.new-badge{background:#0d3040;color:var(--lime)}
-.tl-header-right{text-align:right}
-.tl-header-right .tl-dates{font-size:13px;color:#ffffff80}
-.tl-header-right .tl-dates strong{color:#fff;display:block;font-size:14px}
-
-.tl-actions{display:flex;gap:8px;margin-bottom:1.25rem}
-.tl-action-btn{height:34px;padding:0 16px;border:1px solid var(--border);border-radius:var(--radius);background:#fff;color:var(--text-secondary);font-family:Calibri,sans-serif;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .15s}
-.tl-action-btn:hover{border-color:var(--blue);color:var(--text)}
-.tl-action-btn svg{width:14px;height:14px;flex-shrink:0}
-
-/* product block */
-.product-block{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:1rem;overflow:hidden}
-.product-block-header{padding:.9rem 1.25rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-light)}
-.pbh-left{display:flex;align-items:center;gap:10px}
-.product-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.product-name{font-size:14px;font-weight:600;color:var(--text)}
-.product-meta{font-size:12px;color:var(--text-tertiary);margin-top:1px}
-.product-badge{font-size:11px;padding:3px 8px;border-radius:20px;font-weight:500}
-.badge-new{background:var(--blue-bg);color:var(--blue)}
-.badge-renewal{background:var(--green-bg);color:var(--green)}
-
-/* milestone list */
-.milestone-list{padding:.5rem 0}
-.milestone-row{display:grid;grid-template-columns:28px 1fr auto;gap:0;align-items:start;padding:.55rem 1.25rem;transition:background .1s}
-.milestone-row:hover{background:var(--warm-white)}
-.milestone-row:last-child{border-bottom:none}
-.ms-connector{display:flex;flex-direction:column;align-items:center;padding-top:4px}
-.ms-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.ms-line{width:1px;background:var(--border);flex:1;min-height:16px;margin-top:3px}
-.milestone-row:last-child .ms-line{display:none}
-.ms-content{}
-.ms-phase{font-size:13px;color:var(--text);font-weight:500;line-height:1.3}
-.ms-owner{font-size:11px;color:var(--text-tertiary);margin-top:2px}
-.ms-owner .owner-tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:600;letter-spacing:.03em}
-.owner-flimp{background:var(--blue-bg);color:var(--blue)}
-.owner-client{background:var(--green-bg);color:var(--green)}
-.ms-date{text-align:right}
-.ms-date-val{font-size:13px;font-weight:600;color:var(--text);white-space:nowrap}
-.ms-date-day{font-size:11px;color:var(--text-tertiary);margin-top:2px}
-
-/* deadline warning */
-.deadline-warn{background:var(--red-bg);border:1px solid #f0b0ac;border-radius:var(--radius);padding:.6rem 1rem;margin:.75rem 1.25rem;font-size:12px;color:var(--red);display:flex;align-items:center;gap:8px}
-.deadline-warn svg{width:14px;height:14px;flex-shrink:0;fill:#f9a825}
-
-/* summary footer */
-.tl-summary{background:#f7f8fc;border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem;display:flex;gap:2rem;flex-wrap:wrap}
-.sum-item{display:flex;flex-direction:column;gap:2px}
-.sum-label{font-size:11px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
-.sum-val{font-size:15px;font-weight:600;color:var(--text)}
-
-/* net new onboarding note */
-.nn-note{background:var(--blue-bg);border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;padding:.85rem 1.1rem;margin-bottom:1rem;font-size:13px;color:#1a3d6a;line-height:1.6}
-.nn-note strong{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);margin-bottom:4px}
-
-
-/* ── Phase Preview ── */
+/* ── Phase preview ── */
 #phasePreviewSection{display:none}
-.preview-btn{width:100%;height:44px;background:#fff;border:1.5px solid var(--dark);border-radius:var(--radius-lg);color:var(--dark);font-family:Calibri,sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;margin-top:1.25rem}
-.preview-btn:hover{background:var(--green-bg)}
 .pb-block{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:.75rem;overflow:hidden}
 .pb-header{padding:.8rem 1.1rem;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;transition:background .12s}
 .pb-header:hover{background:var(--warm-white)}
 .pb-confirm{width:18px;height:18px;border-radius:4px;border:2px solid var(--border);background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s;cursor:pointer}
 .pb-confirm.confirmed{background:var(--green);border-color:var(--green)}
 .pb-confirm.confirmed::after{content:'';width:5px;height:9px;border:2px solid #fff;border-top:none;border-left:none;transform:rotate(45deg) translate(-1px,-1px);display:block}
-.pb-chevron{width:16px;height:16px;flex-shrink:0;margin-left:auto;transition:transform .2s;color:var(--text-tertiary)}
+.pb-chevron{width:16px;height:16px;flex-shrink:0;transition:transform .2s;color:var(--text-tertiary)}
 .pb-chevron.open{transform:rotate(180deg)}
 .pb-title-wrap{flex:1;min-width:0}
 .pb-title{font-size:13px;font-weight:600;color:var(--text)}
 .pb-subtitle{font-size:11px;color:var(--text-tertiary);margin-top:1px}
 .pb-body{border-top:1px solid var(--border-light);display:block;max-height:0;overflow:hidden;transition:max-height .35s ease}
 .pb-body.open{max-height:2000px}
+.confirm-wrap{display:flex;align-items:center;gap:6px;margin-left:12px;flex-shrink:0}
+.confirm-label{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text-tertiary)}
+
+/* ── Phase table ── */
 .phase-table{width:100%;border-collapse:collapse}
-.phase-table th{font-size:11px;font-weight:600;color:var(--text-tertiary);letter-spacing:.04em;text-transform:uppercase;padding:.5rem .9rem;text-align:left;border-bottom:1px solid var(--border-light);background:var(--warm-white)}
+.phase-table th{padding:.5rem .9rem;font-size:11px;font-weight:700;color:var(--text-secondary);letter-spacing:.06em;text-transform:uppercase;text-align:left;border-bottom:1px solid var(--border-light);background:var(--warm-white)}
 .phase-table th:nth-child(2),.phase-table th:nth-child(3){text-align:center}
 .phase-table td{padding:.45rem .9rem;border-bottom:1px solid var(--border-light);vertical-align:middle}
 .phase-table tr:last-child td{border-bottom:none}
@@ -208,30 +141,62 @@ body{font-family:Calibri,sans-serif;background:#F2F8F0;color:var(--text);min-hei
 .pt-name{font-family:Calibri,sans-serif;font-size:13px;height:30px;padding:0 8px;border:1px solid transparent;border-radius:5px;color:var(--text);width:100%;background:transparent;transition:border-color .12s}
 .pt-name:hover{border-color:var(--border)}
 .pt-name:focus{outline:none;border-color:var(--blue);background:#fff}
-.phase-rm-btn{width:22px;height:22px;border:1px solid var(--border);border-radius:4px;background:transparent;color:var(--text-tertiary);cursor:pointer;font-size:14px;display:inline-flex;align-items:center;justify-content:center;line-height:1;padding:0;transition:all .12s}
-.phase-rm-btn:hover{border-color:var(--red);color:var(--red);background:var(--red-bg)}
 .pt-dur{font-family:Calibri,sans-serif;font-size:13px;height:30px;padding:0 6px;border:1px solid transparent;border-radius:5px;color:var(--text);width:62px;text-align:center;background:transparent;transition:border-color .12s}
 .pt-dur:hover{border-color:var(--border)}
 .pt-dur:focus{outline:none;border-color:var(--blue);background:#fff}
 .owner-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:3px;letter-spacing:.03em}
+.owner-flimp{background:var(--blue-bg);color:var(--blue)}
+.owner-client{background:var(--green-bg);color:var(--green)}
+.phase-rm-btn{width:22px;height:22px;border:1px solid var(--border);border-radius:4px;background:transparent;color:var(--text-tertiary);cursor:pointer;font-size:14px;display:inline-flex;align-items:center;justify-content:center;line-height:1;padding:0;transition:all .12s}
+.phase-rm-btn:hover{border-color:var(--red);color:var(--red);background:var(--red-bg)}
+.add-phase-btn{width:100%;height:34px;border:1px dashed var(--border);border-top:none;border-radius:0 0 var(--radius-lg) var(--radius-lg);background:transparent;color:var(--text-tertiary);font-family:Calibri,sans-serif;font-size:13px;cursor:pointer;transition:all .15s}
+.add-phase-btn:hover{border-color:var(--blue);color:var(--text);background:var(--blue-bg)}
+
+/* ── Preview status & validation ── */
 .preview-status{display:flex;align-items:center;gap:8px;margin-top:.75rem;font-size:12px;color:var(--text-tertiary)}
 .preview-status .ps-count{font-weight:600;color:var(--green)}
-.generate-btn:disabled{opacity:.4;cursor:not-allowed;background:var(--border)}
 
+/* ── Feasibility panel ── */
+.feasibility-panel{display:none;margin-bottom:1rem;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.feasibility-header{background:var(--dark);padding:.65rem 1.25rem;display:flex;align-items:center;justify-content:space-between}
+.feasibility-title{font-size:11px;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase}
+.feasibility-dates{font-size:11px;color:#ffffff60}
+.feasibility-grid{display:grid;grid-template-columns:1fr 1fr 1fr}
+.feasibility-cell{padding:.9rem 1.25rem}
+.feasibility-cell:not(:last-child){border-right:1px solid var(--border)}
+.feasibility-cell-label{font-size:11px;font-weight:600;color:var(--text-tertiary);letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px}
+.feasibility-value{font-size:22px;font-weight:700;color:var(--text)}
+.feasibility-msg{font-size:11px;color:var(--text-tertiary);margin-top:2px}
+.feasibility-bar-track{height:6px;background:var(--border-light)}
+.feasibility-bar-fill{height:100%;width:0%;transition:width .4s ease,background .3s}
+
+/* ── Timeline output ── */
+#timelineOutput{display:none}
+.tl-actions{display:flex;gap:8px;margin-bottom:1.25rem}
+.tl-action-btn{height:34px;padding:0 16px;border:1px solid var(--border);border-radius:var(--radius);background:#fff;color:var(--text-secondary);font-family:Calibri,sans-serif;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .15s}
+.tl-action-btn:hover{border-color:var(--blue);color:var(--text)}
+.tl-action-btn svg{width:14px;height:14px;flex-shrink:0}
 
 /* ── Unified timeline table ── */
 .unified-tl-wrap{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1rem}
 .unified-tl-title{padding:1rem 1.5rem .75rem;font-size:16px;font-weight:700;color:var(--text);border-bottom:1px solid var(--border-light)}
 .unified-tl-table{width:100%;border-collapse:collapse;font-family:Calibri,sans-serif}
 .unified-tl-table thead tr{background:var(--dark)}
-.unified-tl-table th{padding:.55rem 1rem;font-size:11px;font-weight:700;color:#ffffff90;letter-spacing:.06em;text-transform:uppercase;text-align:left;border-bottom:none}
-.unified-tl-table td{border-bottom:1px solid rgba(0,0,0,.06);vertical-align:middle}
+.unified-tl-table th{padding:.55rem 1rem;font-size:11px;font-weight:700;color:#ffffff90;letter-spacing:.06em;text-transform:uppercase;text-align:left}
+.unified-tl-table td{padding:.5rem 1rem;font-size:13px;color:var(--text);border-bottom:1px solid var(--border-light);vertical-align:top}
 .unified-tl-table tbody tr:last-child td{border-bottom:none}
+.unified-tl-table tbody tr:hover td{background:var(--warm-white)}
+.td-date{font-weight:600;white-space:nowrap;text-align:right}
+.td-deliverable{color:var(--text-secondary)}
 .unified-tl-footer{padding:.75rem 1.5rem;font-size:12px;color:var(--text-secondary);border-top:1.5px solid var(--border);background:var(--warm-white);display:flex;gap:1.5rem;flex-wrap:wrap}
 .unified-tl-footer span strong{color:var(--text);font-weight:700}
 
+/* ── Net new note ── */
+.nn-note{background:var(--blue-bg);border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;padding:.85rem 1.1rem;margin-bottom:1rem;font-size:13px;color:#1a3d6a;line-height:1.6}
+.nn-note strong{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);margin-bottom:4px}
+
 @media print{
-  .app-header,.generate-wrap,.tl-actions{display:none!important}
+  .app-header,.generate-wrap,.tl-actions,.preview-btn,#phasePreviewSection{display:none!important}
   body{background:#fff}
   .card{border:none;padding:0}
   #timelineOutput{display:block!important}
@@ -242,7 +207,8 @@ body{font-family:Calibri,sans-serif;background:#F2F8F0;color:var(--text);min-hei
 
 <header class="app-header">
   <div class="logo">
-    <span style="font-size:21px;font-weight:700;color:#67E74E;letter-spacing:-.01em">flimp</span><span style="font-size:12px;color:#ffffff45;margin-left:6px;letter-spacing:.02em">/ Timeline Generator</span>
+    <span class="logo-wordmark">flimp</span>
+    <span class="logo-sub">/ Timeline Generator</span>
   </div>
   <span class="header-right">Internal Tool</span>
 </header>
@@ -250,7 +216,10 @@ body{font-family:Calibri,sans-serif;background:#F2F8F0;color:var(--text);min-hei
 <div class="page">
 
   <!-- SECTION 1: PROJECT INFO -->
-  <div class="section-head"><div class="section-num">1</div><span class="section-title">Project Information</span></div>
+  <div class="section-head">
+    <div class="section-num">1</div>
+    <span class="section-title">Project Information</span>
+  </div>
   <div class="card">
     <div class="grid2" style="margin-bottom:10px">
       <div class="field"><label>Client name</label><input type="text" id="clientName" placeholder="e.g. Acme Corporation"></div>
@@ -269,7 +238,7 @@ body{font-family:Calibri,sans-serif;background:#F2F8F0;color:var(--text);min-hei
       <div class="field"><label>Due date</label><input type="date" id="dueDate"></div>
       <div class="field">
         <label>Working days / week</label>
-        <select id="workingDaysSelect" onchange="setDays(this.value)" style="font-family:Calibri,sans-serif">
+        <select id="workingDaysSelect" onchange="setDays(this.value)">
           <option value="5" selected>5 days (Mon–Fri)</option>
           <option value="6">6 days (Mon–Sat)</option>
           <option value="7">7 days (Mon–Sun)</option>
@@ -279,17 +248,27 @@ body{font-family:Calibri,sans-serif;background:#F2F8F0;color:var(--text);min-hei
   </div>
 
   <!-- SECTION 2: DELIVERABLES -->
-  <div class="section-head"><div class="section-num">2</div><span class="section-title">Deliverables</span></div>
+  <div class="section-head">
+    <div class="section-num">2</div>
+    <span class="section-title">Deliverables</span>
+  </div>
   <div class="card">
     <div class="row-headers">
-      <span>Product</span><span>Count</span><span>New / Renewal</span><span style="text-align:center">Rounds of edits</span><span></span>
+      <span>Product</span>
+      <span>Count</span>
+      <span>New / Renewal</span>
+      <span>Rounds of edits</span>
+      <span></span>
     </div>
     <div id="delRows"></div>
     <button class="add-row-btn" onclick="addRow()">+ Add deliverable</button>
   </div>
 
-  <!-- SECTION 3: ADDITIONAL -->
-  <div class="section-head"><div class="section-num">3</div><span class="section-title">Additional Items</span></div>
+  <!-- SECTION 3: ADDITIONAL ITEMS -->
+  <div class="section-head">
+    <div class="section-num">3</div>
+    <span class="section-title">Additional Items</span>
+  </div>
   <div class="card">
     <div class="pill-grid" id="addlGrid">
       <div class="pill-item" onclick="togglePill(this)"><div class="pill-check"></div>Library Videos</div>
@@ -303,35 +282,46 @@ body{font-family:Calibri,sans-serif;background:#F2F8F0;color:var(--text);min-hei
   <!-- SECTION 4: PHASE PREVIEW -->
   <div id="phasePreviewSection">
     <div style="height:1.5rem"></div>
-    <div class="section-head"><div class="section-num">4</div><span class="section-title">Review Phases</span><span style="font-size:12px;color:var(--text-tertiary);margin-left:4px">— click "Confirmed" to approve the proposed timeline for each deliverable</span></div>
-    <div id="tlValidation" style="display:none;margin-bottom:1rem;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
-      <div style="background:var(--dark);padding:.65rem 1.25rem;display:flex;align-items:center;justify-content:space-between">
-        <span style="font-size:11px;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase">Timeline Feasibility</span>
-        <span style="font-size:11px;color:#ffffff60" id="tlValDates"></span>
+    <div class="section-head">
+      <div class="section-num">4</div>
+      <span class="section-title">Review Phases</span>
+      <span class="section-hint">— click "Confirmed" to approve the proposed timeline for each deliverable</span>
+    </div>
+
+    <!-- Feasibility panel -->
+    <div class="feasibility-panel" id="feasibilityPanel">
+      <div class="feasibility-header">
+        <span class="feasibility-title">Timeline Feasibility</span>
+        <span class="feasibility-dates" id="feasDates"></span>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr">
-        <div style="padding:.9rem 1.25rem;border-right:1px solid var(--border)">
-          <div style="font-size:11px;font-weight:600;color:var(--text-tertiary);letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px">Days needed</div>
-          <div id="tlValNeeded" style="font-size:22px;font-weight:700;color:var(--text)">—</div>
-          <div style="font-size:11px;color:var(--text-tertiary);margin-top:2px">longest deliverable track</div>
+      <div class="feasibility-grid">
+        <div class="feasibility-cell">
+          <div class="feasibility-cell-label">Days needed</div>
+          <div class="feasibility-value" id="feasNeeded">—</div>
+          <div class="feasibility-msg">longest deliverable track</div>
         </div>
-        <div style="padding:.9rem 1.25rem;border-right:1px solid var(--border)">
-          <div style="font-size:11px;font-weight:600;color:var(--text-tertiary);letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px">Days available</div>
-          <div id="tlValAvailable" style="font-size:22px;font-weight:700;color:var(--text)">—</div>
-          <div style="font-size:11px;color:var(--text-tertiary);margin-top:2px">start → due date</div>
+        <div class="feasibility-cell">
+          <div class="feasibility-cell-label">Days available</div>
+          <div class="feasibility-value" id="feasAvailable">—</div>
+          <div class="feasibility-msg">start → due date</div>
         </div>
-        <div style="padding:.9rem 1.25rem">
-          <div style="font-size:11px;font-weight:600;color:var(--text-tertiary);letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px">Difference</div>
-          <div id="tlValDiff" style="font-size:22px;font-weight:700;color:var(--text)">—</div>
-          <div id="tlValMsg" style="font-size:11px;color:var(--text-tertiary);margin-top:2px">—</div>
+        <div class="feasibility-cell">
+          <div class="feasibility-cell-label">Difference</div>
+          <div class="feasibility-value" id="feasDiff">—</div>
+          <div class="feasibility-msg" id="feasMsg">—</div>
         </div>
       </div>
-      <div style="height:6px;background:var(--border-light)">
-        <div id="tlValFill" style="height:100%;width:0%;transition:width .4s ease,background .3s"></div>
+      <div class="feasibility-bar-track">
+        <div class="feasibility-bar-fill" id="feasFill"></div>
       </div>
     </div>
+
     <div id="pbBlocks"></div>
-    <div class="preview-status"><span>Confirmed:</span><span class="ps-count" id="psCount">0 / 0</span><span>deliverables</span></div>
+    <div class="preview-status">
+      <span>Confirmed:</span>
+      <span class="ps-count" id="psCount">0 / 0</span>
+      <span>deliverables</span>
+    </div>
   </div>
 
   <div class="generate-wrap">
@@ -340,10 +330,12 @@ body{font-family:Calibri,sans-serif;background:#F2F8F0;color:var(--text);min-hei
 
   <div class="section-divider" id="outputDivider" style="display:none"></div>
 
-  <!-- TIMELINE OUTPUT -->
+  <!-- SECTION 5: GENERATED TIMELINE -->
   <div id="timelineOutput">
-    <div class="section-head"><div class="section-num" style="background:var(--green)">5</div><span class="section-title">Generated Timeline</span></div>
-
+    <div class="section-head">
+      <div class="section-num" style="background:var(--green)">5</div>
+      <span class="section-title">Generated Timeline</span>
+    </div>
     <div class="tl-actions">
       <button class="tl-action-btn" onclick="window.print()">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="1" width="10" height="10" rx="1"/><path d="M3 7H1v7h14V7h-2"/><rect x="5" y="11" width="6" height="4"/></svg>
@@ -354,9 +346,7 @@ body{font-family:Calibri,sans-serif;background:#F2F8F0;color:var(--text);min-hei
         Copy table
       </button>
     </div>
-
     <div id="nnNoteWrap"></div>
-
     <div class="unified-tl-wrap">
       <div class="unified-tl-title" id="tlTitle"></div>
       <table class="unified-tl-table" id="tlTable">
@@ -374,677 +364,773 @@ body{font-family:Calibri,sans-serif;background:#F2F8F0;color:var(--text);min-hei
     </div>
   </div>
 
-</div>
+</div><!-- /.page -->
 
 <script>
-// ── Product data ─────────────────────────────────────────────────────────
-const PRODUCTS=[
-  {group:"Videos",color:"#367ED4",dot:"#367ED4",items:["Teaser","Customized Explainer","Premium","Straight Conversion","Straight Conversion (AI)","Branded Template","Custom Creative","Full Day On-site Shoot","Video Translation"]},
-  {group:"Microsites",color:"#44A55D",dot:"#44A55D",items:["Benefits Showcase","Resource Center","Virtual Benefits Fair","Digital Postcard","Mobile Contact Wallet","Mobile Contact Wallet Plus","Onboarding Hub","Employee Newsletter","Microsite Chatbot","Microsite Translation"]},
-  {group:"Traditional Media",color:"#FFB21B",dot:"#FFB21B",items:["Premium Guide","Alternate","Custom","Foreign Language","Companion Piece","BG Chatbot"]}
-];
+'use strict';
 
-// Default phases per product category (will be replaced by CSV in prod)
-const NA_PRODUCTS=['Teaser','Straight Conversion','Straight Conversion (AI)'];
-const PRODUCT_PALETTE=[
-  {client:'#1a6fc4',flimp:'#daeaf7',text:'#0d3d6e'},  // blue
-  {client:'#2e8b4a',flimp:'#d4f0dd',text:'#164d28'},  // green
-  {client:'#c4521a',flimp:'#f7e0d4',text:'#6e2a0d'},  // orange
-  {client:'#7c3aab',flimp:'#ecdaf7',text:'#3e1060'},  // purple
-  {client:'#b5920a',flimp:'#f7f0d0',text:'#6b530a'},  // gold
-  {client:'#1a8f8f',flimp:'#d4f2f2',text:'#0d4e4e'},  // teal
-  {client:'#c41a5e',flimp:'#f7d4e6',text:'#6e0d33'},  // pink
-  {client:'#3d6ea8',flimp:'#dce8f5',text:'#1e3d60'},  // steel blue
-  {client:'#5a8a1a',flimp:'#e4f2d0',text:'#2e4d0a'},  // olive
-  {client:'#a83d3d',flimp:'#f5dcdc',text:'#601e1e'},  // crimson
-];
-const productColorMap={};
-let colorIdx=0;
-function getProductColor(product){
-  if(!productColorMap[product]){
-    productColorMap[product]=PRODUCT_PALETTE[colorIdx%PRODUCT_PALETTE.length];
-    colorIdx++;
+// ── Constants ─────────────────────────────────────────────────────────────
+const PRODUCTS = [
+  {
+    group: 'Videos',
+    color: '#367ED4',
+    items: ['Teaser','Customized Explainer','Premium','Straight Conversion',
+            'Straight Conversion (AI)','Branded Template','Custom Creative',
+            'Full Day On-site Shoot','Video Translation']
+  },
+  {
+    group: 'Microsites',
+    color: '#44A55D',
+    items: ['Benefits Showcase','Resource Center','Virtual Benefits Fair',
+            'Digital Postcard','Mobile Contact Wallet','Mobile Contact Wallet Plus',
+            'Onboarding Hub','Employee Newsletter','Microsite Chatbot','Microsite Translation']
+  },
+  {
+    group: 'Traditional Media',
+    color: '#FFB21B',
+    items: ['Premium Guide','Alternate','Custom','Foreign Language','Companion Piece','BG Chatbot']
   }
-  return productColorMap[product];
-}
+];
 
-const END_PRODUCTS=['Video Translation','Microsite Translation','Microsite Chatbot','BG Chatbot','Print & Mail'];
-const ROUNDS_DEFAULTS={'Teaser':1,'Straight Conversion':1,'Straight Conversion (AI)':1,'Premium Guide':8,'Alternate':8,'Custom':8};
-function defaultRounds(product){return ROUNDS_DEFAULTS[product]||2;}
+// Products where New/Renewal toggle is not applicable
+const NA_PRODUCTS = new Set(['Teaser','Straight Conversion','Straight Conversion (AI)']);
 
-const DEFAULT_PHASES={
-  "Videos":[
-    {name:"Kickoff",dur:2,owner:"Flimp"},
-    {name:"Script",dur:5,owner:"Client"},
-    {name:"Style Slides",dur:3,owner:"Flimp"},
-    {name:"Review Rd 1",dur:5,owner:"Client"},
-    {name:"Storyboards",dur:5,owner:"Flimp"},
-    {name:"Animation & VO",dur:10,owner:"Flimp"},
-    {name:"Client Review Rd 1",dur:5,owner:"Client"},
-    {name:"Client Review Rd 2",dur:5,owner:"Client"},
-    {name:"Final Approval",dur:2,owner:"Client"},
-    {name:"Distribution",dur:1,owner:"Flimp"}
+// Products that run after all parallel deliverables complete
+const END_PRODUCTS = new Set(['Video Translation','Microsite Translation','Microsite Chatbot','BG Chatbot','Print & Mail']);
+
+// Default edit round counts per product (all others default to 2)
+const ROUNDS_DEFAULTS = {
+  'Teaser': 1,
+  'Straight Conversion': 1,
+  'Straight Conversion (AI)': 1,
+  'Premium Guide': 8,
+  'Alternate': 8,
+  'Custom': 8
+};
+
+// Placeholder phase definitions — will be replaced by CSV in production
+const DEFAULT_PHASES = {
+  'Videos': [
+    {name:'Kickoff',       dur:2,  owner:'Flimp'},
+    {name:'Script',        dur:5,  owner:'Client'},
+    {name:'Style Slides',  dur:3,  owner:'Flimp'},
+    {name:'Review Rd 1',   dur:5,  owner:'Client'},
+    {name:'Storyboards',   dur:5,  owner:'Flimp'},
+    {name:'Animation & VO',dur:10, owner:'Flimp'},
+    {name:'Client Review Rd 1', dur:5, owner:'Client'},
+    {name:'Client Review Rd 2', dur:5, owner:'Client'},
+    {name:'Final Approval',dur:2,  owner:'Client'},
+    {name:'Distribution',  dur:1,  owner:'Flimp'}
   ],
-  "Microsites":[
-    {name:"Kickoff",dur:2,owner:"Flimp"},
-    {name:"Content Collection",dur:5,owner:"Client"},
-    {name:"Design & Build",dur:10,owner:"Flimp"},
-    {name:"Internal QA",dur:2,owner:"Flimp"},
-    {name:"Client Review Rd 1",dur:5,owner:"Client"},
-    {name:"Revisions",dur:3,owner:"Flimp"},
-    {name:"Client Review Rd 2",dur:5,owner:"Client"},
-    {name:"Final Approval",dur:2,owner:"Client"},
-    {name:"Launch",dur:1,owner:"Flimp"}
+  'Microsites': [
+    {name:'Kickoff',           dur:2,  owner:'Flimp'},
+    {name:'Content Collection',dur:5,  owner:'Client'},
+    {name:'Design & Build',    dur:10, owner:'Flimp'},
+    {name:'Internal QA',       dur:2,  owner:'Flimp'},
+    {name:'Client Review Rd 1',dur:5,  owner:'Client'},
+    {name:'Revisions',         dur:3,  owner:'Flimp'},
+    {name:'Client Review Rd 2',dur:5,  owner:'Client'},
+    {name:'Final Approval',    dur:2,  owner:'Client'},
+    {name:'Launch',            dur:1,  owner:'Flimp'}
   ],
-  "Traditional Media":[
-    {name:"Kickoff",dur:2,owner:"Flimp"},
-    {name:"Content Collection",dur:5,owner:"Client"},
-    {name:"Design",dur:5,owner:"Flimp"},
-    {name:"Review Rd 1",dur:5,owner:"Client"},
-    {name:"Revisions",dur:3,owner:"Flimp"},
-    {name:"Review Rd 2",dur:5,owner:"Client"},
-    {name:"Final Approval",dur:2,owner:"Client"},
-    {name:"Print / Distribution",dur:2,owner:"Flimp"}
+  'Traditional Media': [
+    {name:'Kickoff',            dur:2, owner:'Flimp'},
+    {name:'Content Collection', dur:5, owner:'Client'},
+    {name:'Design',             dur:5, owner:'Flimp'},
+    {name:'Review Rd 1',        dur:5, owner:'Client'},
+    {name:'Revisions',          dur:3, owner:'Flimp'},
+    {name:'Review Rd 2',        dur:5, owner:'Client'},
+    {name:'Final Approval',     dur:2, owner:'Client'},
+    {name:'Print / Distribution',dur:2,owner:'Flimp'}
   ]
 };
 
-// ── State ────────────────────────────────────────────────────────────────
-let workDays=5;
+// US Federal + common observed holidays 2024–2027
+const HOLIDAYS = new Set([
+  '2024-01-01','2024-01-15','2024-02-19','2024-05-27','2024-06-19',
+  '2024-07-04','2024-09-02','2024-11-11','2024-11-28','2024-11-29',
+  '2024-12-24','2024-12-25','2024-12-31',
+  '2025-01-01','2025-01-20','2025-02-17','2025-05-26','2025-06-19',
+  '2025-07-04','2025-09-01','2025-11-11','2025-11-27','2025-11-28',
+  '2025-12-24','2025-12-25','2025-12-31',
+  '2026-01-01','2026-01-19','2026-02-16','2026-05-25','2026-06-19',
+  '2026-07-03','2026-09-07','2026-11-11','2026-11-26','2026-11-27',
+  '2026-12-24','2026-12-25','2026-12-31',
+  '2027-01-01','2027-01-18','2027-02-15','2027-05-31','2027-06-19',
+  '2027-07-05','2027-09-06','2027-11-11','2027-11-25','2027-11-26',
+  '2027-12-24','2027-12-27','2027-12-31'
+]);
 
-// ── Helpers ──────────────────────────────────────────────────────────────
-const HOLIDAYS_2024_2026=[
-  "2024-01-01","2024-01-15","2024-02-19","2024-05-27","2024-06-19",
-  "2024-07-04","2024-09-02","2024-11-11","2024-11-28","2024-11-29",
-  "2024-12-24","2024-12-25","2024-12-31",
-  "2025-01-01","2025-01-20","2025-02-17","2025-05-26","2025-06-19",
-  "2025-07-04","2025-09-01","2025-11-11","2025-11-27","2025-11-28",
-  "2025-12-24","2025-12-25","2025-12-31",
-  "2026-01-01","2026-01-19","2026-02-16","2026-05-25","2026-06-19",
-  "2026-07-03","2026-09-07","2026-11-11","2026-11-26","2026-11-27",
-  "2026-12-24","2026-12-25","2026-12-31"
-];
+// ── State ─────────────────────────────────────────────────────────────────
+let workDays = 5;
 
-function isHoliday(d){
-  return HOLIDAYS_2024_2026.includes(fmtISO(d));
+// ── Date helpers ──────────────────────────────────────────────────────────
+function toISO(d) {
+  // Use local date parts to avoid UTC offset issues
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const day = String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
 }
 
-function fmtISO(d){
-  return d.toISOString().split('T')[0];
+function isWorkDay(d) {
+  const dow = d.getDay();
+  if (workDays === 5 && (dow === 0 || dow === 6)) return false;
+  if (workDays === 6 && dow === 0) return false;
+  return !HOLIDAYS.has(toISO(d));
 }
 
-function isWorkDay(d){
-  const dow=d.getDay();
-  if(workDays===5&&(dow===0||dow===6))return false;
-  if(workDays===6&&dow===0)return false;
-  if(isHoliday(d))return false;
-  return true;
-}
-
-function addBusinessDays(startDate,days){
-  let d=new Date(startDate);
-  let added=0;
-  while(added<days){
-    d.setDate(d.getDate()+1);
-    if(isWorkDay(d))added++;
+function addBusinessDays(startDate, days) {
+  const dur = Math.max(1, Math.round(days)); // guard against 0 or negative
+  let d = new Date(startDate);
+  let added = 0;
+  let safety = 0;
+  while (added < dur && safety < 1000) {
+    d.setDate(d.getDate() + 1);
+    if (isWorkDay(d)) added++;
+    safety++;
   }
   return d;
 }
 
-function nextWorkDay(d){
-  let nd=new Date(d);
-  while(!isWorkDay(nd))nd.setDate(nd.getDate()+1);
+function nextWorkDay(d) {
+  let nd = new Date(d);
+  let safety = 0;
+  while (!isWorkDay(nd) && safety < 30) { nd.setDate(nd.getDate()+1); safety++; }
   return nd;
 }
 
-function fmtDate(d){
-  return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
-}
-
-function fmtDay(d){
-  return d.toLocaleDateString('en-US',{weekday:'long'});
-}
-
-function fmtDateShort(d){
-  return d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
-}
-
-function getProductGroup(name){
-  return PRODUCTS.find(g=>g.items.includes(name));
-}
-
-// ── UI helpers ────────────────────────────────────────────────────────────
-function setDays(n){
-  workDays=parseInt(n);
-}
-
-function toggleNetNew(){
-  const cb=document.getElementById('netNewCb');
-  document.getElementById('nnLabel').classList.toggle('active',cb.checked);
-}
-
-function buildSelect(){
-  const sel=document.createElement('select');
-  sel.style.cssText='font-family:Calibri,sans-serif;font-size:13px;height:36px;padding:0 8px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);color:var(--text);width:100%';
-  const blank=document.createElement('option');blank.value='';blank.textContent='Select product…';sel.appendChild(blank);
-  PRODUCTS.forEach(g=>{
-    const og=document.createElement('optgroup');og.label=g.group;og.style.color=g.color;
-    g.items.forEach(item=>{
-      const o=document.createElement('option');o.value=item;o.textContent=item;o.style.color=g.color;og.appendChild(o);
-    });
-    sel.appendChild(og);
-  });
-  sel.addEventListener('change',function(){
-    const grp=PRODUCTS.find(g=>g.items.includes(this.value));
-    this.style.color=grp?grp.color:'var(--text)';
-    const row=this.closest('.del-row');
-    if(row){
-      const tog=row.querySelector('.nr-toggle');
-      const isNA=NA_PRODUCTS.includes(this.value);
-      tog.classList.toggle('disabled',isNA);
-      if(isNA){row.querySelectorAll('.nr-btn').forEach(b=>{b.className='nr-btn';});}
-      const rdVal=row.querySelector('.rounds-val');
-      if(rdVal)rdVal.textContent=defaultRounds(this.value);
-    }
-  });
-  return sel;
-}
-
-function buildDelRow(){
-  const row=document.createElement('div');row.className='del-row';
-  row.appendChild(buildSelect());
-  const cnt=document.createElement('input');cnt.type='number';cnt.min=1;cnt.max=99;cnt.value=1;
-  cnt.style.cssText='font-family:Calibri,sans-serif;font-size:14px;height:36px;padding:0 8px;border:1px solid var(--border);border-radius:var(--radius);background:#fff;color:var(--text);text-align:center;width:100%';
-  row.appendChild(cnt);
-  const tog=document.createElement('div');tog.className='nr-toggle';
-  const btnN=document.createElement('button');btnN.textContent='New';btnN.className='nr-btn n-active';
-  const btnR=document.createElement('button');btnR.textContent='Renewal';btnR.className='nr-btn';
-  btnN.onclick=()=>{btnN.className='nr-btn n-active';btnR.className='nr-btn';};
-  btnR.onclick=()=>{btnR.className='nr-btn r-active';btnN.className='nr-btn';};
-  tog.appendChild(btnN);tog.appendChild(btnR);row.appendChild(tog);
-  const stepper=document.createElement('div');stepper.className='rounds-stepper';
-  const rdMinus=document.createElement('button');rdMinus.className='rounds-btn';rdMinus.textContent='−';rdMinus.title='Decrease rounds';
-  const rdVal=document.createElement('div');rdVal.className='rounds-val';rdVal.textContent='2';
-  const rdPlus=document.createElement('button');rdPlus.className='rounds-btn';rdPlus.textContent='+';rdPlus.title='Increase rounds';
-  rdMinus.onclick=()=>{const v=parseInt(rdVal.textContent);if(v>1)rdVal.textContent=v-1;};
-  rdPlus.onclick=()=>{const v=parseInt(rdVal.textContent);if(v<20)rdVal.textContent=v+1;};
-  stepper.appendChild(rdMinus);stepper.appendChild(rdVal);stepper.appendChild(rdPlus);
-  row.appendChild(stepper);
-  const rm=document.createElement('button');rm.className='rm-btn';rm.innerHTML='&times;';
-  rm.onclick=()=>{row.remove();updateRemove();};
-  row.appendChild(rm);
-  return row;
-}
-
-function updateRemove(){
-  const rows=document.querySelectorAll('#delRows .del-row');
-  rows.forEach(r=>{r.querySelector('.rm-btn').style.visibility=rows.length>1?'visible':'hidden';});
-}
-
-function addRow(){
-  document.getElementById('delRows').appendChild(buildDelRow());
-  updateRemove();
-}
-
-function togglePill(el){
-  el.classList.toggle('checked');
-}
-
-
-// ── Phase Preview ─────────────────────────────────────────────────────────
-function previewPhases(){
-  const rows=[...document.querySelectorAll('#delRows .del-row')];
-  const deliverables=rows.map(r=>{
-    const sel=r.querySelector('select');
-    const cnt=parseInt(r.querySelector('input[type=number]').value)||1;
-    const isRenewal=r.querySelector('.nr-btn.r-active')!==null;
-    const rounds=parseInt(r.querySelector('.rounds-val').textContent)||2;
-    return{product:sel.value,count:cnt,isRenewal,rounds};
-  }).filter(d=>d.product);
-
-  if(!deliverables.length){alert('Please select at least one product.');return;}
-
-  const container=document.getElementById('pbBlocks');
-  container.innerHTML='';
-  let blockIndex=0;
-
-  deliverables.forEach(del=>{
-    const grp=getProductGroup(del.product);
-    const dot=grp?grp.dot:'#888';
-    const basePhases=JSON.parse(JSON.stringify(DEFAULT_PHASES[grp?grp.group:'Videos']||DEFAULT_PHASES['Videos']));
-    const isRenewal=del.isRenewal;
-    const isNA=NA_PRODUCTS.includes(del.product);
-
-    // Expand review rounds
-    let phases=[];
-    basePhases.forEach(p=>{
-      if(p.repeatable){
-        for(let r=1;r<=del.rounds;r++){
-          phases.push({...p,name:`${p.baseName} Rd ${r}`});
-        }
-      } else {
-        phases.push(p);
-      }
-    });
-    if(isRenewal) phases=phases.slice(2);
-
-    {
-      const blockTitle=del.product;
-      const isFirst=blockIndex===0;
-      blockIndex++;
-
-      const block=document.createElement('div');
-      block.className='pb-block';
-      block.dataset.confirmed='false';
-
-      const hdr=document.createElement('div');
-      hdr.className='pb-header';
-
-      const confirmBox=document.createElement('div');
-      confirmBox.className='pb-confirm';
-      confirmBox.title='Confirm this deliverable';
-      confirmBox.onclick=(e)=>{
-        const isNowConfirmed=!block.dataset.confirmed||block.dataset.confirmed==='false';
-        block.dataset.confirmed=isNowConfirmed?'true':'false';
-        confirmBox.classList.toggle('confirmed',isNowConfirmed);
-        const body=block.querySelector('.pb-body');
-        const chevron=block.querySelector('.pb-chevron');
-        if(isNowConfirmed){
-          body.classList.remove('open');
-          chevron.classList.remove('open');
-        } else {
-          body.classList.add('open');
-          chevron.classList.add('open');
-        }
-        updateGenerateBtn();
-      };
-
-      const titleWrap=document.createElement('div');
-      titleWrap.className='pb-title-wrap';
-      titleWrap.innerHTML=`<div class="pb-title"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${dot};margin-right:6px;vertical-align:middle"></span>${blockTitle}</div><div class="pb-subtitle">${grp?grp.group:''} &middot; ${isNA||isRenewal?'':isRenewal?'Renewal':'New'} ${isNA?'':(isRenewal?'&#x2022; Renewal':'&#x2022; New')} &middot; ${phases.length} phases</div>`;
-
-      const chevron=document.createElement('div');
-      chevron.className='pb-chevron open';
-      chevron.innerHTML=`<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 6l4 4 4-4"/></svg>`;
-
-      const confirmWrap=document.createElement('div');
-      confirmWrap.style.cssText='display:flex;align-items:center;gap:6px;margin-left:12px;flex-shrink:0';
-      const confirmLabel=document.createElement('span');
-      confirmLabel.textContent='Confirmed';
-      confirmLabel.style.cssText='font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text-tertiary)';
-      confirmWrap.appendChild(confirmLabel);
-      confirmWrap.appendChild(confirmBox);
-      confirmWrap.onclick=(e)=>e.stopPropagation();
-      hdr.appendChild(titleWrap);
-      hdr.appendChild(chevron);
-      hdr.appendChild(confirmWrap);
-
-      hdr.addEventListener('click',()=>{
-        const body=block.querySelector('.pb-body');
-        const open=body.classList.toggle('open');
-        chevron.classList.toggle('open',open);
-      });
-
-      const body=document.createElement('div');
-      body.className='pb-body open';
-
-      const table=document.createElement('table');
-      table.className='phase-table';
-      table.innerHTML=`<thead><tr><th style="width:45%">Phase</th><th style="width:15%">Duration (days)</th><th style="width:15%">Owner</th><th style="width:32px"></th></tr></thead>`;
-      const tbody=document.createElement('tbody');
-
-      phases.forEach(phase=>{
-        const tr=document.createElement('tr');
-        const ownerClass=phase.owner==='Flimp'?'owner-flimp':'owner-client';
-        tr.innerHTML=`
-          <td><input class="pt-name" type="text" value="${phase.name}"></td>
-          <td style="text-align:center"><input class="pt-dur" type="number" min="1" max="60" value="${phase.dur}"></td>
-          <td style="text-align:center"><span class="owner-badge ${ownerClass}">${phase.owner}</span></td>
-          <td style="text-align:center"><button class="phase-rm-btn" title="Remove phase">&times;</button></td>`;
-        tr.querySelector('.phase-rm-btn').onclick=()=>{tr.remove();updateValidation();};
-        tbody.appendChild(tr);
-      });
-
-      table.appendChild(tbody);
-      body.appendChild(table);
-
-      const addPhaseBtn=document.createElement('button');
-      addPhaseBtn.textContent='+ Add phase';
-      addPhaseBtn.style.cssText='width:100%;height:34px;border:1px dashed var(--border);border-top:none;border-radius:0 0 var(--radius-lg) var(--radius-lg);background:transparent;color:var(--text-tertiary);font-family:Calibri,sans-serif;font-size:13px;cursor:pointer;transition:all .15s;';
-      addPhaseBtn.onmouseover=()=>{addPhaseBtn.style.borderColor='var(--blue)';addPhaseBtn.style.color='var(--text)';addPhaseBtn.style.background='var(--blue-bg)';};
-      addPhaseBtn.onmouseout=()=>{addPhaseBtn.style.borderColor='var(--border)';addPhaseBtn.style.color='var(--text-tertiary)';addPhaseBtn.style.background='transparent';};
-      addPhaseBtn.onclick=()=>{
-        const tr=document.createElement('tr');
-        tr.innerHTML=`<td><input class="pt-name" type="text" value="New phase" style="font-family:Calibri,sans-serif;font-size:13px;height:30px;padding:0 8px;border:1px solid var(--blue);border-radius:5px;color:var(--text);width:100%;background:#fff;"></td><td style="text-align:center"><input class="pt-dur" type="number" min="1" max="60" value="3" style="font-family:Calibri,sans-serif;font-size:13px;height:30px;padding:0 6px;border:1px solid var(--border);border-radius:5px;color:var(--text);width:62px;text-align:center;background:transparent;"></td><td style="text-align:center"><span class="owner-badge owner-flimp">Flimp</span></td><td style="text-align:center"><button class="phase-rm-btn" title="Remove phase">&times;</button></td>`;
-        tr.querySelector('.phase-rm-btn').onclick=()=>{tr.remove();updateValidation();};
-        tbody.appendChild(tr);
-        tr.querySelector('.pt-name').focus();
-        tr.querySelector('.pt-name').select();
-        updateValidation();
-      };
-      body.appendChild(addPhaseBtn);
-      block.appendChild(hdr);
-      block.appendChild(body);
-      container.appendChild(block);
-    }
-  });
-
-  document.getElementById('phasePreviewSection').style.display='block';
-  updateGenerateBtn();
-  document.getElementById('phasePreviewSection').scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function calcBusinessDaysInRange(start, end){
-  if(!start||!end||end<=start)return 0;
-  let count=0;
-  let d=new Date(start);
-  d.setDate(d.getDate()+1);
-  while(d<=end){
-    if(isWorkDay(d))count++;
-    d.setDate(d.getDate()+1);
+function countBusinessDays(start, end) {
+  if (!start || !end || end <= start) return 0;
+  let count = 0;
+  let d = new Date(start);
+  d.setDate(d.getDate() + 1);
+  let safety = 0;
+  while (d <= end && safety < 3000) {
+    if (isWorkDay(d)) count++;
+    d.setDate(d.getDate() + 1);
+    safety++;
   }
   return count;
 }
 
-function updateValidation(){
-  const startVal=document.getElementById('startDate').value;
-  const dueVal=document.getElementById('dueDate').value;
-  const valEl=document.getElementById('tlValidation');
-  if(!valEl)return;
+function fmtDateShort(d) {
+  return d.toLocaleDateString('en-US', {month:'short', day:'numeric'});
+}
 
-  if(!startVal){valEl.style.display='none';return;}
-  valEl.style.display='block';
+// Sanitize a string for safe insertion into HTML text content
+function esc(str) {
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
 
-  const startDate=new Date(startVal+'T00:00:00');
-  const dueDate=dueVal?new Date(dueVal+'T00:00:00'):null;
+// ── Product helpers ───────────────────────────────────────────────────────
+function getProductGroup(name) {
+  return PRODUCTS.find(g => g.items.includes(name)) || null;
+}
 
-  // Calculate available business days
-  const available=dueDate?calcBusinessDaysInRange(startDate,dueDate):null;
-  document.getElementById('tlValAvailable').textContent=available!==null?available:'—';
-  document.getElementById('tlValDates').textContent=dueDate?`${fmtDateShort(startDate)} → ${fmtDateShort(dueDate)}`:'No due date set';
+function defaultRounds(product) {
+  return ROUNDS_DEFAULTS[product] || 2;
+}
 
-  // Calculate needed days: longest parallel track + end-sequential sum
-  const blocks=[...document.querySelectorAll('#pbBlocks .pb-block')];
-  if(!blocks.length){
-    document.getElementById('tlValNeeded').textContent='—';
-    document.getElementById('tlValDiff').textContent='—';
-    document.getElementById('tlValMsg').textContent='—';
-    document.getElementById('tlValFill').style.width='0%';
+// ── UI helpers ────────────────────────────────────────────────────────────
+function setDays(n) {
+  workDays = parseInt(n, 10) || 5;
+}
+
+function toggleNetNew() {
+  const cb = document.getElementById('netNewCb');
+  document.getElementById('nnLabel').classList.toggle('active', cb.checked);
+}
+
+function togglePill(el) {
+  el.classList.toggle('checked');
+}
+
+// ── Deliverable row builder ───────────────────────────────────────────────
+function buildSelect() {
+  const sel = document.createElement('select');
+  // Blank option
+  const blank = document.createElement('option');
+  blank.value = '';
+  blank.textContent = 'Select product…';
+  sel.appendChild(blank);
+
+  PRODUCTS.forEach(g => {
+    const og = document.createElement('optgroup');
+    og.label = g.group;
+    og.style.color = g.color;
+    g.items.forEach(item => {
+      const o = document.createElement('option');
+      o.value = item;
+      o.textContent = item;
+      o.style.color = g.color;
+      og.appendChild(o);
+    });
+    sel.appendChild(og);
+  });
+
+  sel.addEventListener('change', function () {
+    const grp = getProductGroup(this.value);
+    this.style.color = grp ? grp.color : 'var(--text)';
+    const row = this.closest('.del-row');
+    if (!row) return;
+    // Toggle N/A products
+    const tog = row.querySelector('.nr-toggle');
+    const isNA = NA_PRODUCTS.has(this.value);
+    tog.classList.toggle('disabled', isNA);
+    if (isNA) row.querySelectorAll('.nr-btn').forEach(b => { b.className = 'nr-btn'; });
+    // Set default rounds
+    const rdVal = row.querySelector('.rounds-val');
+    if (rdVal) rdVal.textContent = defaultRounds(this.value);
+  });
+
+  return sel;
+}
+
+function buildDelRow() {
+  const row = document.createElement('div');
+  row.className = 'del-row';
+
+  row.appendChild(buildSelect());
+
+  // Count input
+  const cnt = document.createElement('input');
+  cnt.type = 'number'; cnt.min = 1; cnt.max = 99; cnt.value = 1;
+  cnt.style.cssText = 'font-family:Calibri,sans-serif;font-size:14px;height:36px;padding:0 8px;border:1px solid var(--border);border-radius:var(--radius);background:#fff;color:var(--text);text-align:center;width:100%';
+  row.appendChild(cnt);
+
+  // New/Renewal toggle
+  const tog = document.createElement('div');
+  tog.className = 'nr-toggle';
+  const btnN = document.createElement('button');
+  btnN.textContent = 'New'; btnN.className = 'nr-btn n-active';
+  const btnR = document.createElement('button');
+  btnR.textContent = 'Renewal'; btnR.className = 'nr-btn';
+  btnN.onclick = () => { btnN.className = 'nr-btn n-active'; btnR.className = 'nr-btn'; };
+  btnR.onclick = () => { btnR.className = 'nr-btn r-active'; btnN.className = 'nr-btn'; };
+  tog.appendChild(btnN); tog.appendChild(btnR);
+  row.appendChild(tog);
+
+  // Rounds stepper
+  const stepper = document.createElement('div');
+  stepper.className = 'rounds-stepper';
+  const rdMinus = document.createElement('button');
+  rdMinus.className = 'rounds-btn'; rdMinus.textContent = '−'; rdMinus.title = 'Decrease rounds';
+  const rdVal = document.createElement('div');
+  rdVal.className = 'rounds-val'; rdVal.textContent = '2';
+  const rdPlus = document.createElement('button');
+  rdPlus.className = 'rounds-btn'; rdPlus.textContent = '+'; rdPlus.title = 'Increase rounds';
+  rdMinus.onclick = () => { const v = parseInt(rdVal.textContent); if (v > 1) rdVal.textContent = v - 1; };
+  rdPlus.onclick = () => { const v = parseInt(rdVal.textContent); if (v < 20) rdVal.textContent = v + 1; };
+  stepper.appendChild(rdMinus); stepper.appendChild(rdVal); stepper.appendChild(rdPlus);
+  row.appendChild(stepper);
+
+  // Remove button
+  const rm = document.createElement('button');
+  rm.className = 'rm-btn'; rm.innerHTML = '&times;'; rm.title = 'Remove deliverable';
+  rm.onclick = () => { row.remove(); updateRemove(); };
+  row.appendChild(rm);
+
+  return row;
+}
+
+function updateRemove() {
+  const rows = document.querySelectorAll('#delRows .del-row');
+  rows.forEach(r => {
+    r.querySelector('.rm-btn').style.visibility = rows.length > 1 ? 'visible' : 'hidden';
+  });
+}
+
+function addRow() {
+  document.getElementById('delRows').appendChild(buildDelRow());
+  updateRemove();
+}
+
+// ── Phase row builder helpers ─────────────────────────────────────────────
+function attachPhaseRowHandlers(tr, tbody) {
+  tr.querySelector('.phase-rm-btn').onclick = () => {
+    tr.remove();
+    updateFeasibility();
+  };
+}
+
+function buildNewPhaseRow() {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td><input class="pt-name" type="text" value="New phase"></td>
+    <td style="text-align:center"><input class="pt-dur" type="number" min="1" max="120" value="3"></td>
+    <td style="text-align:center"><span class="owner-badge owner-flimp">Flimp</span></td>
+    <td style="text-align:center"><button class="phase-rm-btn" title="Remove phase">&times;</button></td>`;
+  return tr;
+}
+
+// ── Phase preview ─────────────────────────────────────────────────────────
+function previewPhases() {
+  const rows = [...document.querySelectorAll('#delRows .del-row')];
+  const deliverables = rows.map(r => ({
+    product: r.querySelector('select').value,
+    count:   parseInt(r.querySelector('input[type=number]').value) || 1,
+    isRenewal: r.querySelector('.nr-btn.r-active') !== null,
+    rounds:  parseInt(r.querySelector('.rounds-val').textContent) || 2
+  })).filter(d => d.product);
+
+  if (!deliverables.length) { alert('Please select at least one product.'); return; }
+
+  const container = document.getElementById('pbBlocks');
+  container.innerHTML = '';
+  let blockIndex = 0;
+
+  deliverables.forEach(del => {
+    const grp = getProductGroup(del.product);
+    const dot = grp ? grp.color : '#888';
+    const isRenewal = del.isRenewal;
+    const isNA = NA_PRODUCTS.has(del.product);
+
+    // Deep-clone phases to avoid mutating constants
+    let phases = JSON.parse(JSON.stringify(
+      DEFAULT_PHASES[grp ? grp.group : 'Videos'] || DEFAULT_PHASES['Videos']
+    ));
+    if (isRenewal) phases = phases.slice(2);
+
+    const block = document.createElement('div');
+    block.className = 'pb-block';
+    block.dataset.confirmed = 'false';
+    block.dataset.product = del.product;
+
+    // Header
+    const hdr = document.createElement('div');
+    hdr.className = 'pb-header';
+
+    const titleWrap = document.createElement('div');
+    titleWrap.className = 'pb-title-wrap';
+    const variantLabel = isNA ? '' : (isRenewal ? ' &bull; Renewal' : ' &bull; New');
+    titleWrap.innerHTML = `
+      <div class="pb-title">
+        <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${esc(dot)};margin-right:6px;vertical-align:middle"></span>
+        ${esc(del.product)}
+      </div>
+      <div class="pb-subtitle">${esc(grp ? grp.group : '')}${variantLabel} &middot; ${phases.length} phases</div>`;
+
+    const chevron = document.createElement('div');
+    chevron.className = 'pb-chevron open';
+    chevron.innerHTML = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 6l4 4 4-4"/></svg>`;
+
+    const confirmBox = document.createElement('div');
+    confirmBox.className = 'pb-confirm';
+    confirmBox.title = 'Confirm this deliverable';
+
+    const confirmWrap = document.createElement('div');
+    confirmWrap.className = 'confirm-wrap';
+    const confirmLabel = document.createElement('span');
+    confirmLabel.className = 'confirm-label';
+    confirmLabel.textContent = 'Confirmed';
+    confirmWrap.appendChild(confirmLabel);
+    confirmWrap.appendChild(confirmBox);
+    confirmWrap.onclick = e => e.stopPropagation();
+
+    confirmBox.onclick = () => {
+      const isNow = block.dataset.confirmed !== 'true';
+      block.dataset.confirmed = isNow ? 'true' : 'false';
+      confirmBox.classList.toggle('confirmed', isNow);
+      const body = block.querySelector('.pb-body');
+      if (isNow) { body.classList.remove('open'); chevron.classList.remove('open'); }
+      else       { body.classList.add('open');    chevron.classList.add('open');    }
+      updateGenerateBtn();
+    };
+
+    hdr.appendChild(titleWrap);
+    hdr.appendChild(chevron);
+    hdr.appendChild(confirmWrap);
+    hdr.addEventListener('click', () => {
+      const body = block.querySelector('.pb-body');
+      const open = body.classList.toggle('open');
+      chevron.classList.toggle('open', open);
+    });
+
+    // Body
+    const body = document.createElement('div');
+    body.className = 'pb-body open';
+
+    const table = document.createElement('table');
+    table.className = 'phase-table';
+    table.innerHTML = `<thead><tr>
+      <th style="width:45%">Phase</th>
+      <th style="width:18%">Duration (days)</th>
+      <th style="width:18%">Owner</th>
+      <th style="width:32px"></th>
+    </tr></thead>`;
+    const tbody = document.createElement('tbody');
+
+    phases.forEach(phase => {
+      const tr = document.createElement('tr');
+      const ownerClass = phase.owner === 'Flimp' ? 'owner-flimp' : 'owner-client';
+      // Use DOM methods to avoid XSS when eventually loading from CSV
+      const tdName = document.createElement('td');
+      const nameInput = document.createElement('input');
+      nameInput.className = 'pt-name'; nameInput.type = 'text'; nameInput.value = phase.name;
+      tdName.appendChild(nameInput);
+
+      const tdDur = document.createElement('td');
+      tdDur.style.textAlign = 'center';
+      const durInput = document.createElement('input');
+      durInput.className = 'pt-dur'; durInput.type = 'number';
+      durInput.min = 1; durInput.max = 120; durInput.value = phase.dur;
+      tdDur.appendChild(durInput);
+
+      const tdOwner = document.createElement('td');
+      tdOwner.style.textAlign = 'center';
+      const badge = document.createElement('span');
+      badge.className = `owner-badge ${ownerClass}`;
+      badge.textContent = phase.owner;
+      tdOwner.appendChild(badge);
+
+      const tdRm = document.createElement('td');
+      tdRm.style.textAlign = 'center';
+      const rmBtn = document.createElement('button');
+      rmBtn.className = 'phase-rm-btn'; rmBtn.title = 'Remove phase'; rmBtn.textContent = '×';
+      rmBtn.onclick = () => { tr.remove(); updateFeasibility(); };
+      tdRm.appendChild(rmBtn);
+
+      tr.appendChild(tdName); tr.appendChild(tdDur);
+      tr.appendChild(tdOwner); tr.appendChild(tdRm);
+      tbody.appendChild(tr);
+    });
+
+    table.appendChild(tbody);
+    body.appendChild(table);
+
+    // Add phase button
+    const addPhaseBtn = document.createElement('button');
+    addPhaseBtn.className = 'add-phase-btn';
+    addPhaseBtn.textContent = '+ Add phase';
+    addPhaseBtn.onclick = () => {
+      const tr = buildNewPhaseRow();
+      tr.querySelector('.phase-rm-btn').onclick = () => { tr.remove(); updateFeasibility(); };
+      tbody.appendChild(tr);
+      tr.querySelector('.pt-name').focus();
+      tr.querySelector('.pt-name').select();
+      updateFeasibility();
+    };
+    body.appendChild(addPhaseBtn);
+
+    block.appendChild(hdr);
+    block.appendChild(body);
+    container.appendChild(block);
+    blockIndex++;
+  });
+
+  document.getElementById('phasePreviewSection').style.display = 'block';
+  updateGenerateBtn();
+  document.getElementById('phasePreviewSection').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ── Feasibility panel ─────────────────────────────────────────────────────
+function updateFeasibility() {
+  const panel = document.getElementById('feasibilityPanel');
+  if (!panel) return;
+
+  const startVal = document.getElementById('startDate').value;
+  const dueVal   = document.getElementById('dueDate').value;
+
+  if (!startVal) { panel.style.display = 'none'; return; }
+  panel.style.display = 'block';
+
+  const startDate = new Date(startVal + 'T00:00:00');
+  const dueDate   = dueVal ? new Date(dueVal + 'T00:00:00') : null;
+
+  const available = dueDate ? countBusinessDays(startDate, dueDate) : null;
+  document.getElementById('feasAvailable').textContent = available !== null ? available : '—';
+  document.getElementById('feasDates').textContent = dueDate
+    ? `${fmtDateShort(startDate)} → ${fmtDateShort(dueDate)}`
+    : 'No due date set';
+
+  // Calculate needed days from preview blocks
+  const blocks = [...document.querySelectorAll('#pbBlocks .pb-block')];
+  if (!blocks.length) {
+    ['feasNeeded','feasDiff'].forEach(id => document.getElementById(id).textContent = '—');
+    document.getElementById('feasMsg').textContent = '—';
+    document.getElementById('feasFill').style.width = '0%';
     return;
   }
 
-  // Get deliverables to know which are end products
-  const rows=[...document.querySelectorAll('#delRows .del-row')];
-  const deliverables=rows.map(r=>({
-    product:r.querySelector('select').value
-  })).filter(d=>d.product);
-
-  let maxParallelDays=0;
-  let totalEndDays=0;
-  blocks.forEach((block,i)=>{
-    const product=deliverables[i]?deliverables[i].product:'';
-    const isEnd=END_PRODUCTS.includes(product);
-    const total=[...block.querySelectorAll('.pt-dur')].reduce((sum,inp)=>sum+(parseInt(inp.value)||0),0);
-    if(isEnd){
-      totalEndDays=Math.max(totalEndDays,total);
+  let maxParallelDays = 0;
+  let maxEndDays = 0;
+  blocks.forEach(block => {
+    const product = block.dataset.product || '';
+    const total = [...block.querySelectorAll('.pt-dur')]
+      .reduce((sum, inp) => sum + (Math.max(1, parseInt(inp.value) || 1)), 0);
+    if (END_PRODUCTS.has(product)) {
+      if (total > maxEndDays) maxEndDays = total;
     } else {
-      if(total>maxParallelDays)maxParallelDays=total;
+      if (total > maxParallelDays) maxParallelDays = total;
     }
   });
 
-  const needed=maxParallelDays+totalEndDays;
-  document.getElementById('tlValNeeded').textContent=needed;
+  const needed = maxParallelDays + maxEndDays;
+  document.getElementById('feasNeeded').textContent = needed;
 
-  if(available===null){
-    document.getElementById('tlValDiff').textContent='—';
-    document.getElementById('tlValMsg').textContent='Set a due date to check feasibility';
-    document.getElementById('tlValFill').style.width='0%';
-    document.getElementById('tlValFill').style.background='var(--border)';
-    document.getElementById('tlValDiff').style.color='var(--text)';
+  if (available === null) {
+    document.getElementById('feasDiff').textContent = '—';
+    document.getElementById('feasMsg').textContent = 'Set a due date to check feasibility';
+    document.getElementById('feasFill').style.cssText = 'width:0%;background:var(--border)';
+    document.getElementById('feasDiff').style.color = 'var(--text)';
     return;
   }
 
-  const diff=available-needed;
-  const diffEl=document.getElementById('tlValDiff');
-  const msgEl=document.getElementById('tlValMsg');
-  const fillEl=document.getElementById('tlValFill');
-  const pct=Math.min(100,Math.round((needed/Math.max(available,needed))*100));
+  const diff = available - needed;
+  const pct  = Math.min(100, Math.round((needed / Math.max(available, needed)) * 100));
+  const diffEl = document.getElementById('feasDiff');
+  const msgEl  = document.getElementById('feasMsg');
+  const fillEl = document.getElementById('feasFill');
 
-  diffEl.textContent=(diff>=0?'+':'')+diff+' days';
+  diffEl.textContent = (diff >= 0 ? '+' : '') + diff + ' days';
 
-  if(diff>=6){
-    diffEl.style.color='#2e8b4a';
-    msgEl.textContent='Timeline fits with buffer';
-    msgEl.style.color='#2e8b4a';
-    fillEl.style.width=pct+'%';
-    fillEl.style.background='#44A55D';
-  } else if(diff>=1){
-    diffEl.style.color='#b5920a';
-    msgEl.textContent='Tight but feasible — only '+diff+' day'+(diff===1?'':'s')+' buffer';
-    msgEl.style.color='#b5920a';
-    fillEl.style.width=pct+'%';
-    fillEl.style.background='var(--amber)';
-  } else if(diff===0){
-    diffEl.style.color='#b5920a';
-    msgEl.textContent='Exactly on time — no buffer';
-    msgEl.style.color='#b5920a';
-    fillEl.style.width='100%';
-    fillEl.style.background='var(--amber)';
+  if (diff >= 6) {
+    diffEl.style.color = '#2e8b4a'; msgEl.style.color = '#2e8b4a';
+    msgEl.textContent = 'Timeline fits with buffer';
+    fillEl.style.cssText = `width:${pct}%;background:#44A55D`;
+  } else if (diff >= 1) {
+    diffEl.style.color = '#b5920a'; msgEl.style.color = '#b5920a';
+    msgEl.textContent = `Tight — only ${diff} day${diff === 1 ? '' : 's'} buffer`;
+    fillEl.style.cssText = `width:${pct}%;background:var(--amber)`;
+  } else if (diff === 0) {
+    diffEl.style.color = '#b5920a'; msgEl.style.color = '#b5920a';
+    msgEl.textContent = 'Exactly on time — no buffer';
+    fillEl.style.cssText = 'width:100%;background:var(--amber)';
   } else {
-    diffEl.style.color='var(--red)';
-    msgEl.textContent=Math.abs(diff)+' days over — consider compressing';
-    msgEl.style.color='var(--red)';
-    fillEl.style.width='100%';
-    fillEl.style.background='var(--red)';
+    diffEl.style.color = 'var(--red)'; msgEl.style.color = 'var(--red)';
+    msgEl.textContent = `${Math.abs(diff)} days over — consider compressing`;
+    fillEl.style.cssText = 'width:100%;background:var(--red)';
   }
 }
 
-function updateGenerateBtn(){
-  const psCount=document.getElementById('psCount');
-  const generateBtn=document.getElementById('generateBtn');
-  if(!psCount||!generateBtn)return;
-  const blocks=[...document.querySelectorAll('#pbBlocks .pb-block')];
-  const total=blocks.length;
-  const confirmed=blocks.filter(b=>b.dataset.confirmed==='true').length;
-  psCount.textContent=`${confirmed} / ${total}`;
-  generateBtn.disabled=(confirmed<total)||total===0;
-  updateValidation();
+// ── Generate button state ─────────────────────────────────────────────────
+function updateGenerateBtn() {
+  const psCount     = document.getElementById('psCount');
+  const generateBtn = document.getElementById('generateBtn');
+  if (!psCount || !generateBtn) return;
+  const blocks    = [...document.querySelectorAll('#pbBlocks .pb-block')];
+  const total     = blocks.length;
+  const confirmed = blocks.filter(b => b.dataset.confirmed === 'true').length;
+  psCount.textContent = `${confirmed} / ${total}`;
+  generateBtn.disabled = total === 0 || confirmed < total;
+  updateFeasibility();
 }
 
-// ── Generate ──────────────────────────────────────────────────────────────
-function generateTimeline(){
-  const client=document.getElementById('clientName').value.trim()||'Client';
-  const project=document.getElementById('projectName').value.trim()||'Untitled Project';
-  const startVal=document.getElementById('startDate').value;
-  const dueVal=document.getElementById('dueDate').value;
-  const isNetNew=document.getElementById('netNewCb').checked;
+// ── Generate timeline ─────────────────────────────────────────────────────
+function generateTimeline() {
+  const client    = esc(document.getElementById('clientName').value.trim() || 'Client');
+  const project   = esc(document.getElementById('projectName').value.trim() || 'Untitled Project');
+  const startVal  = document.getElementById('startDate').value;
+  const dueVal    = document.getElementById('dueDate').value;
+  const isNetNew  = document.getElementById('netNewCb').checked;
 
-  if(!startVal){alert('Please enter a start date.');return;}
+  if (!startVal) { alert('Please enter a start date.'); return; }
 
-  const startDate=nextWorkDay(new Date(startVal+'T00:00:00'));
-  const dueDate=dueVal?new Date(dueVal+'T00:00:00'):null;
+  const startDate = nextWorkDay(new Date(startVal + 'T00:00:00'));
+  const dueDate   = dueVal ? new Date(dueVal + 'T00:00:00') : null;
 
-  // Collect deliverables
-  const rows=[...document.querySelectorAll('#delRows .del-row')];
-  const deliverables=rows.map(r=>{
-    const sel=r.querySelector('select');
-    const cnt=parseInt(r.querySelector('input[type=number]').value)||1;
-    const isRenewal=r.querySelector('.nr-btn.r-active')!==null;
-    const rounds=parseInt(r.querySelector('.rounds-val').textContent)||2;
-    return{product:sel.value,count:cnt,isRenewal,rounds};
-  }).filter(d=>d.product);
+  // Collect deliverables from form
+  const deliverables = [...document.querySelectorAll('#delRows .del-row')]
+    .map(r => ({
+      product:   r.querySelector('select').value,
+      count:     parseInt(r.querySelector('input[type=number]').value) || 1,
+      isRenewal: r.querySelector('.nr-btn.r-active') !== null,
+      rounds:    parseInt(r.querySelector('.rounds-val').textContent) || 2
+    }))
+    .filter(d => d.product);
 
-  if(!deliverables.length){alert('Please select at least one product.');return;}
+  if (!deliverables.length) { alert('Please select at least one product.'); return; }
 
-  // Additional items
-  const addl=[...document.querySelectorAll('#addlGrid .pill-item.checked')].map(el=>el.childNodes[1].textContent.trim());
+  const addl = [...document.querySelectorAll('#addlGrid .pill-item.checked')]
+    .map(el => el.childNodes[1].textContent.trim());
 
-  // Read edited phases from preview blocks
-  const previewBlocks=[...document.querySelectorAll('#pbBlocks .pb-block')];
-  let blockIdx=0;
+  // Read edited phases from preview blocks (in order)
+  const previewBlocks = [...document.querySelectorAll('#pbBlocks .pb-block')];
+  let blockIdx = 0;
 
-  // Reset color assignments for this generation
-  Object.keys(productColorMap).forEach(k=>delete productColorMap[k]);
-  colorIdx=0;
+  function readPhases(block) {
+    if (!block) return [];
+    return [...block.querySelectorAll('.phase-table tbody tr')].map(tr => {
+      const nameInput  = tr.querySelector('.pt-name');
+      const durInput   = tr.querySelector('.pt-dur');
+      const ownerBadge = tr.querySelector('.owner-badge');
+      return {
+        name:  nameInput  ? nameInput.value.trim()  : '',
+        dur:   Math.max(1, parseInt(durInput ? durInput.value : 1) || 1),
+        owner: ownerBadge ? ownerBadge.textContent.trim() : 'Flimp'
+      };
+    }).filter(p => p.name);
+  }
 
-  // Split deliverables into parallel (standard) and end-sequential groups
-  const parallelDels=deliverables.filter(d=>!END_PRODUCTS.includes(d.product));
-  const endDels=deliverables.filter(d=>END_PRODUCTS.includes(d.product));
+  const parallelDels = deliverables.filter(d => !END_PRODUCTS.has(d.product));
+  const endDels      = deliverables.filter(d => END_PRODUCTS.has(d.product));
 
-  const allMilestones=[];
-  let parallelEndDate=new Date(startDate);
-  let projectEndDate=new Date(startDate);
-  let totalWorkDays=0;
+  const allMilestones = [];
+  let parallelEndDate = new Date(startDate);
+  let projectEndDate  = new Date(startDate);
+  let totalWorkDays   = 0;
 
-  // ── Pass 1: Parallel deliverables (all start on startDate) ───────────────
-  parallelDels.forEach(del=>{
-    const deliverableLabel=del.product;
-    let vDate=new Date(startDate);
-
-    const previewBlock=previewBlocks[blockIdx++];
-    const phases=previewBlock?[...previewBlock.querySelectorAll('.phase-table tbody tr')].map(tr=>{
-      const inputs=[...tr.querySelectorAll('input')];
-      const ownerEl=tr.querySelector('.owner-badge');
-      return{name:inputs[0].value.trim(),dur:parseInt(inputs[1].value)||1,owner:ownerEl?ownerEl.textContent.trim():'Flimp'};
-    }):[];
-
-    phases.forEach(phase=>{
-      const endDate=addBusinessDays(vDate,phase.dur);
-      totalWorkDays+=phase.dur;
-      allMilestones.push({
-        date:new Date(endDate),
-        dateSort:endDate.getTime(),
-        owner:phase.owner,
-        deliverable:deliverableLabel,
-        product:del.product,
-        task:phase.name,
-      });
-      if(endDate>parallelEndDate)parallelEndDate=new Date(endDate);
-      if(endDate>projectEndDate)projectEndDate=new Date(endDate);
-      vDate=nextWorkDay(new Date(endDate));
+  // Pass 1: parallel deliverables — all start on startDate
+  parallelDels.forEach(del => {
+    let vDate = new Date(startDate);
+    const phases = readPhases(previewBlocks[blockIdx++]);
+    phases.forEach(phase => {
+      const endDate = addBusinessDays(vDate, phase.dur);
+      totalWorkDays += phase.dur;
+      allMilestones.push({date: endDate, owner: phase.owner, deliverable: del.product, task: phase.name});
+      if (endDate > parallelEndDate) parallelEndDate = new Date(endDate);
+      if (endDate > projectEndDate)  projectEndDate  = new Date(endDate);
+      vDate = nextWorkDay(new Date(endDate));
     });
   });
 
-  // ── Pass 2: End deliverables (all start after parallel block ends, run in parallel with each other) ──
-  const endStartDate=parallelDels.length>0?nextWorkDay(new Date(parallelEndDate)):new Date(startDate);
-
-  endDels.forEach(del=>{
-    const deliverableLabel=del.product;
-    let vDate=new Date(endStartDate);
-
-    const previewBlock=previewBlocks[blockIdx++];
-    const phases=previewBlock?[...previewBlock.querySelectorAll('.phase-table tbody tr')].map(tr=>{
-      const inputs=[...tr.querySelectorAll('input')];
-      const ownerEl=tr.querySelector('.owner-badge');
-      return{name:inputs[0].value.trim(),dur:parseInt(inputs[1].value)||1,owner:ownerEl?ownerEl.textContent.trim():'Flimp'};
-    }):[];
-
-    phases.forEach(phase=>{
-      const endDate=addBusinessDays(vDate,phase.dur);
-      totalWorkDays+=phase.dur;
-      allMilestones.push({
-        date:new Date(endDate),
-        dateSort:endDate.getTime(),
-        owner:phase.owner,
-        deliverable:deliverableLabel,
-        product:del.product,
-        task:phase.name,
-      });
-      if(endDate>projectEndDate)projectEndDate=new Date(endDate);
-      vDate=nextWorkDay(new Date(endDate));
+  // Pass 2: end deliverables — start after parallel block, run in parallel with each other
+  const endStart = parallelDels.length > 0 ? nextWorkDay(new Date(parallelEndDate)) : new Date(startDate);
+  endDels.forEach(del => {
+    let vDate = new Date(endStart);
+    const phases = readPhases(previewBlocks[blockIdx++]);
+    phases.forEach(phase => {
+      const endDate = addBusinessDays(vDate, phase.dur);
+      totalWorkDays += phase.dur;
+      allMilestones.push({date: endDate, owner: phase.owner, deliverable: del.product, task: phase.name});
+      if (endDate > projectEndDate) projectEndDate = new Date(endDate);
+      vDate = nextWorkDay(new Date(endDate));
     });
   });
 
-  // Sort all milestones by date
-  allMilestones.sort((a,b)=>a.dateSort-b.dateSort);
+  // Sort chronologically
+  allMilestones.sort((a, b) => a.date - b.date);
 
-  // Show output section
-  document.getElementById('outputDivider').style.display='block';
-  const output=document.getElementById('timelineOutput');
-  output.style.display='block';
+  // Group by date + owner (Client and Flimp never combined)
+  const groups = [];
+  const groupIndex = {};
+  allMilestones.forEach(m => {
+    const key = toISO(m.date) + '|' + m.owner;
+    if (groupIndex[key] === undefined) {
+      groupIndex[key] = groups.length;
+      groups.push({date: m.date, owner: m.owner, items: [], isPastDue: false});
+    }
+    groups[groupIndex[key]].items.push(m);
+    if (dueDate && m.date > dueDate) groups[groupIndex[key]].isPastDue = true;
+  });
+  groups.sort((a, b) => a.date - b.date || a.owner.localeCompare(b.owner));
+
+  // Render output
+  document.getElementById('outputDivider').style.display = 'block';
+  const output = document.getElementById('timelineOutput');
+  output.style.display = 'block';
 
   // Net new note
-  const nnWrap=document.getElementById('nnNoteWrap');
-  if(isNetNew){
-    nnWrap.innerHTML=`<div class="nn-note" style="margin-bottom:1rem">
-      <strong>Net New Client</strong>
-      This project involves a new client relationship with Flimp. Please allow additional time during the Kickoff and onboarding phases for account setup, portal access provisioning, and alignment on Flimp's production process and review expectations. All milestone dates assume timely client responsiveness — delays in content delivery or review rounds will push the schedule accordingly.
-    </div>`;
-  } else {
-    nnWrap.innerHTML='';
-  }
+  const nnWrap = document.getElementById('nnNoteWrap');
+  nnWrap.innerHTML = isNetNew
+    ? `<div class="nn-note"><strong>Net New Client</strong>This project involves a new client relationship with Flimp. Please allow additional time during the Kickoff and onboarding phases for account setup, portal access provisioning, and alignment on Flimp's production process and review expectations. All milestone dates assume timely client responsiveness — delays in content delivery or review rounds will push the schedule accordingly.</div>`
+    : '';
 
-  // Title
-  document.getElementById('tlTitle').textContent=project;
+  document.getElementById('tlTitle').textContent = project;
 
+  const tbody = document.getElementById('tlTableBody');
+  tbody.innerHTML = '';
+  let hasWarning = false;
 
-  // Populate table
-  const tbody=document.getElementById('tlTableBody');
-  tbody.innerHTML='';
+  groups.forEach(group => {
+    if (group.isPastDue) hasWarning = true;
+    const tr = document.createElement('tr');
+    if (group.isPastDue) tr.style.background = 'var(--red-bg)';
 
-  // Group milestones by date + owner (Client and Flimp never combined)
-  const byDate=[];
-  const dateIndex={};
-  allMilestones.forEach(m=>{
-    const key=fmtDateShort(m.date)+'|'+m.owner;
-    if(dateIndex[key]===undefined){dateIndex[key]=byDate.length;byDate.push({key,date:m.date,owner:m.owner,items:[],isPastDue:false});}
-    byDate[dateIndex[key]].items.push(m);
-    if(dueDate&&m.date>dueDate)byDate[dateIndex[key]].isPastDue=true;
-  });
-  byDate.sort((a,b)=>a.date-b.date||a.owner.localeCompare(b.owner));
+    const deliverables_str = [...new Set(group.items.map(m => m.deliverable))].join(', ');
+    const tasks_str        = [...new Set(group.items.map(m => m.task))].join(', ');
 
-  let hasWarning=false;
-  byDate.forEach(group=>{
-    if(group.isPastDue)hasWarning=true;
-    const tr=document.createElement('tr');
-    if(group.isPastDue)tr.style.background='var(--red-bg)';
+    const tdParty = document.createElement('td');
+    tdParty.textContent = group.owner;
 
-    // Build combined party, deliverable, task strings
-    const parties=group.owner;
-    const deliverables=[...new Set(group.items.map(m=>m.deliverable))].join(', ');
-    const tasks=[...new Set(group.items.map(m=>m.task))].join(', ');
+    const tdDel = document.createElement('td');
+    tdDel.className = 'td-deliverable';
+    tdDel.textContent = deliverables_str;
 
-    tr.innerHTML=`
-      <td style="font-size:13px;color:var(--text);padding:.5rem 1rem;border-bottom:1px solid var(--border-light);vertical-align:top">${parties}</td>
-      <td style="font-size:13px;color:var(--text-secondary);padding:.5rem 1rem;border-bottom:1px solid var(--border-light);vertical-align:top">${deliverables}</td>
-      <td style="font-size:13px;color:var(--text);padding:.5rem 1rem;border-bottom:1px solid var(--border-light);vertical-align:top">${tasks}</td>
-      <td style="font-size:13px;font-weight:600;color:${group.isPastDue?'var(--red)':'var(--text)'};padding:.5rem 1rem;white-space:nowrap;text-align:right;border-bottom:1px solid var(--border-light);vertical-align:top">${fmtDateShort(group.date)}</td>`;
+    const tdTask = document.createElement('td');
+    tdTask.textContent = tasks_str;
+
+    const tdDate = document.createElement('td');
+    tdDate.className = 'td-date';
+    tdDate.textContent = fmtDateShort(group.date);
+    if (group.isPastDue) tdDate.style.color = 'var(--red)';
+
+    tr.appendChild(tdParty); tr.appendChild(tdDel);
+    tr.appendChild(tdTask);  tr.appendChild(tdDate);
     tbody.appendChild(tr);
   });
 
-  if(hasWarning){
-    const warnTr=document.createElement('tr');
-    warnTr.innerHTML=`<td colspan="4" style="background:var(--red-bg);color:var(--red);font-size:12px;padding:.5rem 1rem;font-weight:600">
-      One or more phases extend past the due date. Consider compressing durations in the phase review step.
-    </td>`;
+  if (hasWarning) {
+    const warnTr = document.createElement('tr');
+    const warnTd = document.createElement('td');
+    warnTd.colSpan = 4;
+    warnTd.style.cssText = 'background:var(--red-bg);color:var(--red);font-size:12px;padding:.5rem 1rem;font-weight:600';
+    warnTd.textContent = 'One or more phases extend past the due date. Consider compressing durations in the phase review step.';
+    warnTr.appendChild(warnTd);
     tbody.appendChild(warnTr);
   }
 
-  // Footer
-  document.getElementById('tlFooter').innerHTML=`
-    <span><strong>Project Start:</strong> ${fmtDateShort(startDate)}</span>
-    <span><strong>Working Days:</strong> ${totalWorkDays}</span>
-    ${dueDate?`<span><strong>Due Date:</strong> ${fmtDateShort(dueDate)}</span>`:''}
-    <span><strong>Projected End:</strong> ${fmtDateShort(projectEndDate)}</span>
-    <span><strong>Deliverables:</strong> ${deliverables.reduce((a,d)=>a+d.count,0)}${addl.length?' + '+addl.join(', '):''}</span>`;
+  const footer = document.getElementById('tlFooter');
+  footer.innerHTML = '';
+  [
+    ['Project Start', fmtDateShort(startDate)],
+    ['Working Days', totalWorkDays],
+    ...(dueDate ? [['Due Date', fmtDateShort(dueDate)]] : []),
+    ['Projected End', fmtDateShort(projectEndDate)],
+    ['Deliverables', deliverables.reduce((a,d) => a + d.count, 0) + (addl.length ? ' + ' + addl.join(', ') : '')]
+  ].forEach(([label, value]) => {
+    const span = document.createElement('span');
+    span.innerHTML = `<strong>${esc(label)}:</strong> ${esc(String(value))}`;
+    footer.appendChild(span);
+  });
 
-  output.scrollIntoView({behavior:'smooth',block:'start'});
+  output.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ── Copy table ────────────────────────────────────────────────────────────
+function copyTable() {
+  const rows = [...document.querySelectorAll('#tlTableBody tr')];
+  const header = 'Party\tDeliverable\tTask\tDue Date';
+  const lines = rows.map(r => {
+    const cells = [...r.querySelectorAll('td')];
+    if (cells.length < 4) return null;
+    return cells.slice(0, 4).map(c => c.textContent.trim()).join('\t');
+  }).filter(Boolean);
+
+  navigator.clipboard.writeText([header, ...lines].join('\n')).then(() => {
+    const btn = document.querySelector('.tl-action-btn:last-child');
+    const orig = btn.innerHTML;
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.innerHTML = orig; }, 1500);
+  });
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────
-const dr=document.getElementById('delRows');
-for(let i=0;i<3;i++)dr.appendChild(buildDelRow());
-updateRemove();
+(function init() {
+  // Build initial 3 deliverable rows
+  const dr = document.getElementById('delRows');
+  for (let i = 0; i < 3; i++) dr.appendChild(buildDelRow());
+  updateRemove();
 
-// Default start date to today
-const today=new Date();
-document.getElementById('startDate').value=fmtISO(today);
-document.getElementById('startDate').addEventListener('change',updateValidation);
-document.getElementById('dueDate').addEventListener('change',updateValidation);
+  // Default start date to today
+  const today = new Date();
+  document.getElementById('startDate').value = toISO(today);
 
-// Single persistent listener for live duration edits in phase preview
-document.addEventListener('input',function(e){
-  if(e.target.classList.contains('pt-dur'))updateValidation();
-});
+  // Trigger feasibility update when dates change
+  document.getElementById('startDate').addEventListener('change', updateFeasibility);
+  document.getElementById('dueDate').addEventListener('change', updateFeasibility);
+
+  // Live feasibility update on duration field changes or phase add/remove
+  document.addEventListener('input', e => {
+    if (e.target.classList.contains('pt-dur')) updateFeasibility();
+  });
+})();
 </script>
 </body>
 </html>
